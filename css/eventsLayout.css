@@ -1,31 +1,13 @@
-.thumb {
-	display: inline-block;
-    position: relative;
-    width: 50%;
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+.panel-body {
+    background-size:cover
 }
 
-.dummy {
-	margin-top: 75%;
-}
-
-.event-img {
-	position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.mask {
-	position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    background-color: rgba(255,255,255, 0.5); 
-    transition: all 0.4s ease-in-out;
-}
-
-.mask:hover {
-	opacity: 1;
+.row {
+ -moz-column-width: 25em;
+ -webkit-column-width: 25em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em; 
+  
 }

@@ -2,18 +2,44 @@
 	<head>
 		<content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<title>Plan</title>
+
+		<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>
 		<form role='form'>
-			<input value='CHOOSE GROUP TO INVITE'><br>
-			<input value='EVENT NAME'><br>
-			<input value='DESCRIPTION'><br>
-			<input value='LOCATION'><br>
-			<input type='date' value='DATE'><br>
-			<input type='time' value='START TIME'><br>
-			<input type='time' value='END TIME'><br>
-			<input type='submit' value='CREATE EVENT'><br>
+			<div class="form-group">
+				<select class="form-control">
+					<option>1</option>
+					<option>2</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<input type='text' class="form-control" placeholder='EVENT NAME'>
+			</div>
+
+			<div class="form-group">
+				<textarea class="form-control" rows="3"></textarea>
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder='LOCATION'>
+			</div>
+
+			<div class="form-group">
+				<input type='date' class="form-control">
+			</div>
+
+			<div class="form-group">
+				<input type='time' class="form-control">
+			</div>
+
+			<div class="form-group">
+				<input type='time' class="form-control">
+			</div>
+
+			<button type="submit" class="btn btn-default">Create Event</button>
 		</form>
 	</body>
 </html>

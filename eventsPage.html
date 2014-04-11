@@ -12,7 +12,8 @@
 <script src="js/masonry.pkgd.min.js"></script>
 <script>
 	$(document).ready(function($) {
-		$(".panel").addClass("col-lg-4");
+		$('.container').masonry();
+
 		$(".panel-body").click(function(){
 			$(this).parent(".panel").find(".panel-heading").slideToggle();
 		})
@@ -23,38 +24,40 @@
 <div class="container">
   <div class="row">
     <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/img4.jpg)"></div>
- 		<div class="panel-heading">details
+ 		<div class="panel-body" style="background: url(images/img4.jpg)"></div>
+ 		<div class="panel-heading">
+ 			<label>Location:</label> 900 Washington Ave., Saltville, MA 02139
+ 			<label>Description:</label> It's Tommy's birthday!
  		</div>
  	</div>
 
     <div class="panel panel-default">
- 		<div class="panel-heading">Panel</div>
  		<div class="panel-body">Content here.. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Aliquam in felis sit amet augue.</div>
+        <div class="panel-heading">Panel</div>
  	</div>
 	<div class="panel panel-default">
- 		<div class="panel-heading">Title</div>
  		<div class="panel-body">Content here.. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
         Quisque mauris augue orc. Duis elementum auctor accumsan. 
         Aliquam in felis sit amet augue.</div>
+        <div class="panel-heading">Title</div>
  	</div>
 	<div class="panel panel-default">
- 		<div class="panel-heading">Title</div>
  		<div class="panel-body">Content here.. 
         Aliquam in felis sit amet augue.</div>
+        <div class="panel-heading">Title</div>
  	</div>
 	<div class="panel panel-default">
- 		<div class="panel-heading">Panel</div>
  		<div class="panel-body">Content here.. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
         Quisque imperdiet venenatis. Duis elementum auctor accumsan. 
         Aliquam in felis sit amet augue.</div>
+        <div class="panel-heading">Panel</div>
  	</div>
 	<div class="panel panel-default">
- 		<div class="panel-heading">Title</div>
  		<div class="panel-body">ng elit. Duis pharetra varius quam sit amet vulputate. 
         Quisque mauris augue orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
         Aliquam in felis sit amet augue.</div>
+        <div class="panel-heading">Title</div>
  	</div>
 </div>
 </div>

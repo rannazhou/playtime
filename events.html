@@ -5,31 +5,15 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/eventsLayout.css" />
+<link rel="stylesheet" type="text/css" href="css/tilesLayout.css" />
 
 <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script src="js/masonry.pkgd.min.js"></script>
-<script>
-	$(document).ready(function($) {
-		$(".panel-heading").hide();
-		$(".panel-body").click(function(){
-			$(this).parent(".panel").find(".panel-heading").slideToggle();
-		})
-
-		$(".join-btn").click(function() {
-			$(this).toggleClass("btn-success");
-			$(this).text(function(i, text){
-          		return text === "Join" ? "Joined" : "Join";
-      		});
-      		// this stops the click from propogating to the parent
-      		return false;
-		});
-	});
-</script>
+<script src="js/main.js"></script>
 
 </head>
-<div class="container">
+<div class="container events">
   <div class="row">
     <div class="panel panel-default">
  		<div class="panel-body" style="background: url(images/img4.jpg)">
@@ -145,16 +129,5 @@
 </div>
 </div>
 <body>
-	
 
-<!--
-	<div id="main" class="container-fluid">
-    	<div class="row show-grid">
-	    	<div class="event col-lg-4" style="background-image:url(images/img4.jpg)">
-		   		<div class="details">
-		   		</div>
-	    	</div>
-	  	</div>
-    </div>
- -->
 </html>

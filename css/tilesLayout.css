@@ -1,14 +1,13 @@
-
-.panel-body {
-    background-position:center;
-    background-repeat:no-repeat; 
-    height: 25em;
-    padding: 0;
+.events .row{
+	-moz-column-width: 25em;
+	-webkit-column-width: 25em; 
+	-moz-column-gap: 1em;
+	-webkit-column-gap:1em; 
 }
 
-.row {
-	-moz-column-width: 25em;
-	-webkit-column-width: 25em;
+.peers .row{
+	-moz-column-width: 16em;
+	-webkit-column-width: 16em;
 	-moz-column-gap: 1em;
 	-webkit-column-gap:1em; 
 }
@@ -18,25 +17,53 @@
 	width:98%;
 }
 
+.panel-body {
+    background-position:center;
+    background-repeat:no-repeat;
+    padding: 0;
+}
+
+.events .panel-body {
+	height: 25em;
+}
+
+.peers .panel-body {
+	height: 16em;
+}
+
 .gradient {
 	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(0,0,0,0)),color-stop(100%,rgba(0,0,0,0.75))) no-repeat;
-	bottom: -18em;
 	color: #fff;
 	position: relative;
 	width: 100%;
+}
+
+.events .gradient {
+	bottom: -18em;
 	height: 7em;
+}
+
+.peers .gradient {
+	bottom: -12em;
+	height: 4em;
 }
 
 .info {
 	bottom: 1em;
-	color: #ccc;
-	font-size: 13px;
 	position: absolute;
+	color: #fff;
+}
+
+.events .info {
 	width: 70%;
 }
 
+.peers .info {
+	width: 100;
+	text-align: center;
+}
+
 .title {
-	color: #fff;
 	font-size: 16px;
 	line-height: 1.5em;
 	white-space: nowrap;
@@ -47,9 +74,10 @@
 
 .time {
 	padding: 0 1em;
+	color: #ccc;
 }
 
-button {
+.join-btn {
 	position: absolute;
 	right: 1em;
 	bottom: 1em;

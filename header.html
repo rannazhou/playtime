@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Henny+Penny|Irish+Grover|Waiting+for+the+Sunrise|Gochi+Hand|Shadows+Into+Light|Englebert|Oregano' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Sniglet' rel='stylesheet' type='text/css'>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+		<script>
+			$(document).on("click", ".group-filter", function() {
+				if ($(this).hasClass("active")) {
+					$(this).removeClass("active");
+				} else {
+					$(this).addClass("active");
+				}
+			});
+
+			$(document).on("click", "#show-all-info", function() {
+				if ($(this).hasClass("show-state")) {
+					$(this).removeClass("show-state").addClass("hide-state").html("HIDE ALL INFO");
+				} else {
+					$(this).addClass("hide-state").addClass("show-state").html("SHOW ALL INFO");
+				}
+			})
+		</script>
+		
+	</head>
+	<body>
+		<nav class="navbar" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a id="logo" href="#">playtime</a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> <span class="section-name">Peers</span></a></li>
+			        <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> <span class="section-name">Events</span></a></li>
+			        <li class="plan-item"><button class="btn plan-btn btn-large"><span class="glyphicon glyphicon-plus-sign"></span> Plan</button></li>
+			      </ul>
+			      <button class="btn btn-large navbar-right profile-pic"><span class="glyphicon glyphicon-user"></span></button>
+			    </div>
+			</div>
+		</nav>
+
+<!-- EVENTS PAGE -->
+		<div class="controls">
+			<div class="filters">
+				<label>Showing events for:</label>
+				<span class="label group-filter label-success active">Ms. Creevey's Pre-K Class</span>
+				<span class="label group-filter label-warning active">Saltsville Daycare Playgroup A</span>
+			</div>
+			<input type="text" class="form-control input-lg" placeholder="Search for a peer, family, or event...">
+			<p><button id="show-all-info" class="btn btn-primary btn-lg show-state">SHOW ALL INFO</button></p>
+
+		</div>
+
+	</hr>
+
+<!--PEERS STUFF STARTS HERE -->
+
+		<div class="controls">
+			<label>Group:</label>
+			<select class="form-control inline">
+				<option>Ms. Creevey's Pre-K Class</option>
+				<option>Saltsville Daycare Playgroup A</option>
+			</select>
+			<input type="text" class="form-control input-lg" placeholder="Search for a peer or family...">
+
+		</div>
+	</body>
+</html>

@@ -12,4 +12,12 @@ $(document).ready(function($) {
   		// this stops the click from propogating to the parent
   		return false;
 	});
+
+	$(".view-events-btn").click(function() {
+		$(this).toggleClass("btn-success");
+		//TODO: implement filtering of event by this kid
+
+  		// this stops the click from propogating to the parent
+  		return false;
+	});
 });

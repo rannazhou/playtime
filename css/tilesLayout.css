@@ -18,6 +18,7 @@
 }
 
 .panel-body {
+	background-size: cover;
     background-position:center;
     background-repeat:no-repeat;
     padding: 0;
@@ -39,13 +40,13 @@
 }
 
 .events .gradient {
-	bottom: -18em;
-	height: 7em;
+	bottom: -16em;
+	height: 9em;
 }
 
 .peers .gradient {
-	bottom: -12em;
-	height: 4em;
+	bottom: -11em;
+	height: 5em;
 }
 
 .info {
@@ -67,9 +68,16 @@
 	font-size: 16px;
 	line-height: 1.5em;
 	white-space: nowrap;
-	padding: 1ex 1em;
 	word-wrap: break-word;
 	white-space: normal;
+}
+
+.events .title {
+	padding: 1ex 1em;
+}
+
+.peers .title {
+	padding: 0 1em;
 }
 
 .time {
@@ -82,4 +90,8 @@
 	right: 1em;
 	bottom: 1em;
 	width: 25%;
+}
+
+.view-events-btn {
+
 }

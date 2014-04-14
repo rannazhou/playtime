@@ -5,11 +5,22 @@
 
 		<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+		<link type="text/css" href="css/image-picker.css" rel="stylesheet">
+		<link type="text/css" href="css/jquery.timepicker.css" rel="stylesheet">
+
 		<script type="text/javascript" src="jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
+		<script type="text/javascript" src="js/jquery.timepicker.js"></script>
 		<script>
 		$(function() {
-			$( ".datepicker" ).datepicker();
+			$( "#end" ).datepicker();
+
+			$( "#start" ).datepicker({
+		    	altField: "#end",
+		    	altFormat: "mm/dd/yy"
+		    });
+
+		    $(".time").timepicker();
 		});
 		</script>
 	</head>
@@ -48,7 +59,6 @@
 					<textarea class="form-control" rows="4"></textarea>
 				</div>
 			</div>
-			
 
 			<div class="row">
 				<div class="form-group col-md-2 col-md-offset-1 input-lg">
@@ -67,7 +77,7 @@
 				</div>
 
 				<div class="form-group col-md-3">
-					<input type='text' class="form-control datepicker input-lg">
+					<input type='text' class="form-control input-lg" id="start">
 				</div>
 
 				<div class="form-group col-md-2 text-center input-lg">
@@ -75,7 +85,7 @@
 				</div>
 
 				<div class="form-group col-md-3">
-					<input type='time' class="form-control input-lg">
+					<input type='text' class="form-control input-lg time ui-timepicker-input text-center">
 				</div>
 
 			</div>
@@ -87,7 +97,7 @@
 				</div>
 
 				<div class="form-group col-md-3">
-					<input type='text' class="form-control datepicker input-lg">
+					<input type='text' class="form-control input-lg" id="end">
 				</div>
 
 				<div class="form-group col-md-2 text-center input-lg">
@@ -95,7 +105,7 @@
 				</div>
 
 				<div class="form-group col-md-3">
-					<input type='time' class="form-control input-lg">
+					<input type='text' class="form-control input-lg time ui-timepicker-input text-center">
 				</div>
 
 			</div>

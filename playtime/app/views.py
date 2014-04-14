@@ -1,15 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def index(request):
 	# TODO: route to a different page if logged out?
-	return render(request, 'events.html')
+	return redirect(show_events)
 
 def show_events(request):
-	return render(request, 'events.html')
+	temp_vars = {
+		"page_name": "events"
+	}
+	return render(request, 'events.html', temp_vars)
 
 def show_peers(request):
-	return render(request, 'peers.html')
+	temp_vars = {
+		"page_name": "peers"
+	}
+	return render(request, 'peers.html', temp_vars)
 
 def plan(request):
-	return render(request, 'plan.html')
+	temp_vars = {
+		"page_name": "plan"
+	}
+	return render(request, 'plan.html', temp_vars)

@@ -18,7 +18,7 @@
 }
 
 .panel-body {
-	background-size: cover	!important;
+	background-size: cover;
     background-position:center;
     background-repeat:no-repeat;
     padding: 0;
@@ -86,5 +86,5 @@
 }
 
 .view-events-btn {
-	
+
 }

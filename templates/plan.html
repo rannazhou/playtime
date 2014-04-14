@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href="site_media/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
+<link type="text/css" href="site_media/css/image-picker.css" rel="stylesheet">
+<link type="text/css" href="site_media/css/jquery.timepicker.css" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="site_media/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
+<script type="text/javascript" src="site_media/js/image-picker.js"></script>
+<script type="text/javascript" src="site_media/js/jquery.timepicker.js"></script>
+<script>
+$(function() {
+	$( "#end" ).datepicker();
+
+	$( "#start" ).datepicker({
+    	altField: "#end",
+    	altFormat: "mm/dd/yy"
+    });
+
+    $(".time").timepicker();
+
+    $(".image-picker").imagepicker({
+    	hide_select:false
+    });
+});
+</script>
+{% endblock %}
+
+
+{% block content %}
+<form role='form' class="container">
+	<div class="row">
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>EVENT NAME</label>
+		</div>
+
+		<div class="form-group col-md-8">
+			<input type='text' class="form-control input-lg">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>GROUP OF PEERS</label>
+		</div>
+
+		<div class="form-group col-md-8">
+			<select class="form-control input-lg">
+				<option>Ms. Creevy's Pre-K Class</option>
+				<option>Saltsville Daycare Playgroup A</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>DESCRIPTION</label>
+		</div>
+
+		<div class="form-group col-md-8">
+			<textarea class="form-control" rows="4"></textarea>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>CHOOSE PHOTO</label>
+		</div>
+
+		<div class="form-group col-md-8">
+			<select class="form-control input-lg image-picker">
+				<option value=""></option>
+					<option data-img-src="site_media/images/events/hiking.jpg" value="1">Hiking</option>
+					<option data-img-src="site_media/images/events/icecreampicnic.JPG" value="2">Picnic</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>LOCATION</label>
+		</div>
+
+		<div class="form-group col-md-8">
+			<input type="text" class="form-control input-lg">
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>START TIME</label>
+		</div>
+
+		<div class="form-group col-md-3">
+			<input type='text' class="form-control input-lg" id="start">
+		</div>
+
+		<div class="form-group col-md-2 text-center input-lg">
+			<label>AT</label>
+		</div>
+
+		<div class="form-group col-md-3">
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center">
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-md-2 col-md-offset-1 input-lg">
+			<label>END TIME</label>
+		</div>
+
+		<div class="form-group col-md-3">
+			<input type='text' class="form-control input-lg" id="end">
+		</div>
+
+		<div class="form-group col-md-2 text-center input-lg">
+			<label>AT</label>
+		</div>
+
+		<div class="form-group col-md-3">
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center">
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class= "form-group col-md-2 col-md-offset-3">
+			<button type="submit" class="btn btn-primary btn-lg">Create Event</button>
+		</div>
+	</div>
+
+</form>
+{% endblock %}

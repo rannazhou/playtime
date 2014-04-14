@@ -1,22 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
+{% endblock %}
+
+{% block js %}
+<script src="site_media/js/masonry.pkgd.min.js"></script>
+<script src="site_media/js/main.js"></script>
+<script>
+$(document).on("click", ".group-filter", function() {
+	if ($(this).hasClass("active")) {
+		$(this).removeClass("active");
+	} else {
+		$(this).addClass("active");
+	}
+});
+
+$(document).on("click", "#show-all-info", function() {
+	if ($(this).hasClass("show-state")) {
+		$(this).removeClass("show-state").addClass("hide-state").html("HIDE ALL INFO");
+	} else {
+		$(this).addClass("hide-state").addClass("show-state").html("SHOW ALL INFO");
+	}
+})
+</script>
+{% endblock %}
 
 
-<head>
+{% block content %}
+<div class="controls">
+	<div class="filters">
+		<label>Showing events for:</label>
+		<span class="label group-filter label-success active">Ms. Creevey's Pre-K Class</span>
+		<span class="label group-filter label-warning active">Saltsville Daycare Playgroup A</span>
+	</div>
+	<input type="text" class="form-control input-lg" placeholder="Search for a peer, family, or event...">
+	<p><button id="show-all-info" class="btn btn-primary btn-lg show-state">SHOW ALL INFO</button></p>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/tilesLayout.css" />
+</div>
 
-<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script src="js/masonry.pkgd.min.js"></script>
-<script src="js/main.js"></script>
-
-</head>
 <div class="container events">
   <div class="row">
     <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img4.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img4.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Hiking Trip</div>
@@ -32,7 +58,7 @@
  	</div>
 
     <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img5.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img5.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy's birthday party omg he's gonna be four</div>
@@ -48,7 +74,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img6.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img6.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy's birthday party omg he's gonna be four</div>
@@ -64,7 +90,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img7.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img7.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy's birthday party omg he's gonna be four</div>
@@ -80,7 +106,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img8.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img8.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy's birthday party omg he's gonna be four</div>
@@ -96,7 +122,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img0.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img0.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy's birthday party omg he's gonna be four</div>
@@ -112,7 +138,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/events/img2.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/events/img2.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy's birthday party omg he's gonna be four</div>
@@ -128,6 +154,4 @@
  	</div>
 </div>
 </div>
-<body>
-
-</html>
+{% endblock %}

@@ -1,22 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
+{% endblock %}
 
 
-<head>
+{% block js %}
+<script src="site_media/js/masonry.pkgd.min.js"></script>
+<script src="site_media/js/main.js"></script>
+{% endblock %}
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/tilesLayout.css" />
+{% block content %}
+<div class="controls">
+	<form class="form-horizontal" role="form">
+	  <div class="form-group">
+	    <label for="group-select" class="col-sm-1 control-label">Group:</label>
+	    <div class="col-sm-11">
+	    	<select id="group-select" class="form-control">
+				<option>Ms. Creevey's Pre-K Class</option>
+				<option>Saltsville Daycare Playgroup A</option>
+			</select>
+	    </div>
+	  </div>
+	 </form>
 
-<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script src="js/masonry.pkgd.min.js"></script>
-<script src="js/main.js"></script>
+	<input type="text" class="form-control input-lg" placeholder="Search for a peer or family...">
+</div>
 
-</head>
 <div class="container peers">
   <div class="row">
     <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/ella.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/ella.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Elle Brown</div>
@@ -32,7 +46,7 @@
  	</div>
 
     <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/hannah.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/hannah.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Hannah Macquire</div>
@@ -48,7 +62,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/shana.jpeg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/shana.jpeg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Shana Downey</div>
@@ -64,7 +78,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/tommy.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/tommy.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Tommy Rosenberg</div>
@@ -80,7 +94,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/joseph.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/joseph.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Joseph Hugener</div>
@@ -96,7 +110,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/helena.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/helena.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Helena Vazov</div>
@@ -112,7 +126,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/vivek.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/vivek.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Vivek Rao</div>
@@ -128,7 +142,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/max.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/max.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Max Thompson</div>
@@ -144,7 +158,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/derek.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/derek.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Derek Jacobs</div>
@@ -160,7 +174,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/joanna.jpg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/joanna.jpg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Joanna Pope</div>
@@ -176,7 +190,7 @@
  	</div>
 
  	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(images/peers/prek/catherine.jpeg)">
+ 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/catherine.jpeg)">
  			<div class="gradient">
  				<div class="info">
  					<div class="title">Catherine Huffman</div>
@@ -192,6 +206,4 @@
  	</div>
 </div>
 </div>
-<body>
-
-</html>
+{% endblock %}

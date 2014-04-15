@@ -23,7 +23,7 @@ DATABASES = {
 }
 
 ### CHANGE THIS TO THE PATH WHERE PLAYTIME IS STORED ON YOUR MACHINE
-PLAYTIME_DIR = '/Users/christina/Documents/MIT/6.813/playtime/'
+PLAYTIME_DIR = '/Users/ranna/Desktop/playtime/'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts

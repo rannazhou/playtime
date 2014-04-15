@@ -33,21 +33,21 @@ $(function() {
 {% block content %}
 <form role='form' class="container">
 	<div class="row">
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>EVENT NAME</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>Event name:</label>
 		</div>
 
-		<div class="form-group col-md-8">
+		<div class="form-group col-md-9">
 			<input type='text' class="form-control input-lg">
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>GROUP OF PEERS</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>Group(s) to invite:</label>
 		</div>
 
-		<div class="form-group col-md-8">
+		<div class="form-group col-md-9">
 			<select class="form-control input-lg">
 				<option>Ms. Creevy's Pre-K Class</option>
 				<option>Saltsville Daycare Playgroup A</option>
@@ -56,55 +56,60 @@ $(function() {
 	</div>
 
 	<div class="row">
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>DESCRIPTION</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>Description:</label>
 		</div>
 
-		<div class="form-group col-md-8">
+		<div class="form-group col-md-9">
 			<textarea class="form-control" rows="4"></textarea>
 		</div>
 	</div>
 
 
 	<div class="row">
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>CHOOSE PHOTO</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>Choose photo:</label>
 		</div>
 
-		<div class="form-group col-md-8">
-			<select class="form-control input-lg image-picker">
+		<div class="form-group col-md-9">
+			<select class="form-control input-lg image-picker" style="visibility:hidden;">
 				<option value=""></option>
-					<option data-img-src="site_media/images/events/hiking.jpg" value="1">Hiking</option>
-					<option data-img-src="site_media/images/events/icecreampicnic.JPG" value="2">Picnic</option>
+				<option data-img-src="site_media/images/events/hiking.jpg" value="1">Hiking</option>
+				<option data-img-src="site_media/images/events/icecreampicnic.JPG" value="2">Picnic</option>
+				<option data-img-src="site_media/images/events/birthday_party.jpg" value="3">Birthday Party</option>
+				<option data-img-src="site_media/images/events/img0.jpg" value="4">Image 0</option>
+				<option data-img-src="site_media/images/events/img1.jpg" value="5">Image 1</option>
+				<option data-img-src="site_media/images/events/img2.jpg" value="6">Image 2</option>
+				<option data-img-src="site_media/images/events/img3.jpg" value="7">Image 3</option>
 			</select>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>LOCATION</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>Location:</label>
 		</div>
 
-		<div class="form-group col-md-8">
+		<div class="form-group col-md-9">
 			<input type="text" class="form-control input-lg">
 		</div>
 	</div>
 
 	<div class="row">
 
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>START TIME</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>Start date:</label>
 		</div>
 
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-4">
 			<input type='text' class="form-control input-lg" id="start">
 		</div>
 
-		<div class="form-group col-md-2 text-center input-lg">
-			<label>AT</label>
+		<div class="form-group col-md-1 text-center input-lg">
+			<label>at</label>
 		</div>
 
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-4">
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center">
 		</div>
 
@@ -112,19 +117,19 @@ $(function() {
 
 	<div class="row">
 
-		<div class="form-group col-md-2 col-md-offset-1 input-lg">
-			<label>END TIME</label>
+		<div class="form-group col-md-3 input-lg">
+			<label>End time:</label>
 		</div>
 
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-4">
 			<input type='text' class="form-control input-lg" id="end">
 		</div>
 
-		<div class="form-group col-md-2 text-center input-lg">
-			<label>AT</label>
+		<div class="form-group col-md-1 text-center input-lg">
+			<label>at</label>
 		</div>
 
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-4">
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center">
 		</div>
 

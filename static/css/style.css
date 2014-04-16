@@ -52,13 +52,13 @@ body {
 }
 .controls {
   font-size: 18px;
-  margin: 10px;
+  margin: 10px 0 30px;
 }
 .controls p {
-  padding: 10px;
+  padding-top: 10px;
   text-align: center;
 }
-label {
+.controls label {
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -70,4 +70,7 @@ label {
 }
 .label.group-filter.active {
   opacity: 1;
+}
+#show-all-info {
+  width: 132px;
 }

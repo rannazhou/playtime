@@ -19,8 +19,10 @@ $(document).on("click", ".group-filter", function() {
 $(document).on("click", "#show-all-info", function() {
 	if ($(this).hasClass("show-state")) {
 		$(this).removeClass("show-state").addClass("hide-state").html("Hide all info");
+		$(".panel-heading").slideDown();
 	} else {
 		$(this).addClass("hide-state").addClass("show-state").html("Show all info");
+		$(".panel-heading").slideUp();
 	}
 });
 </script>

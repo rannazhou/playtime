@@ -34,6 +34,9 @@ body {
 .navbar .active a {
   color: #7e45d3;
 }
+.navbar .active#plan-nav {
+  color: #65a7ee;
+}
 .nav.navbar-nav > li > a:hover {
   background-color: #7e45d3;
   color: #e7e737;
@@ -45,6 +48,9 @@ body {
   background-color: #65a7ee;
   padding: 6px 12px 3px;
   margin: 12px 20px;
+}
+.btn.plan-btn.active {
+  background-color: #fff;
 }
 .btn.profile-pic {
   font-size: 32px;

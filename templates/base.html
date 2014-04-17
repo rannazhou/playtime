@@ -45,9 +45,10 @@
 			      	<!-- TODO: dynamically set which tab is active -->
 			        <li id="peers-nav"><a href="{% url 'peers' %}"><span class="glyphicon glyphicon-user"></span> <span class="section-name">Peers</span></a></li>
 			        <li id="events-nav"><a href="{% url 'events' %}"><span class="glyphicon glyphicon-calendar"></span> <span class="section-name">Events</span></a></li>
-			        <li id="plan-nav" class="plan-item"><a href="{% url 'plan' %}" class="btn plan-btn btn-large"><span class="glyphicon glyphicon-plus-sign"></span> Plan</a></li>
+			        <!-- <li id="plan-nav" class="plan-item"></li> -->
 			      </ul>
 			      <button class="btn btn-large navbar-right profile-pic"><span class="glyphicon glyphicon-user"></span></button>
+			      <a href="{% url 'plan' %}" class="btn plan-btn btn-large navbar-right"><span class="glyphicon glyphicon-plus-sign"></span> Plan</a>
 			    </div>
 			</div>
 		</nav>

@@ -1,24 +1,72 @@
 {% extends "base.html" %}
 
+{% block title %}Playtime: Peers{% endblock %}
+
 {% block css %}
 <link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
 {% endblock %}
 
 
 {% block js %}
-<script src="site_media/js/masonry.pkgd.min.js"></script>
-<script src="site_media/js/main.js"></script>
+<script> 
+$(document).ready(function($) {
+	$(".panel-heading").hide();
+
+	$(".panel-body").click(function() {
+		$(this).parent(".panel").find(".panel-heading").slideToggle();
+	});
+
+	$(".view-events-btn").click(function() {
+		$(this).toggleClass("btn-success");
+		//TODO: implement filtering of event by this kid
+
+		// this stops the click from propogating to the parent
+		return false;
+	});
+
+	$("#group-select").change(function(){
+		var id = $(this).find("option:selected").attr("id");
+
+		switch (id){
+			case "pre-k":
+				$(".daycare").hide();
+				$(".pre-k").show();
+				break;
+			case "daycare":
+				$(".pre-k").hide();
+				$(".daycare").show();
+				break;
+		}
+	});
+
+	$(".daycare").hide();
+
+	$("#derek").mouseenter(function() {
+		$(this).css("background-image","url(site_media/images/peers/prek/jacobsfam.jpg)");
+	}).mouseleave(function() {
+		$(this).css("background-image","url(site_media/images/peers/prek/derek.jpg)");
+	});
+
+	$("#joanna").mouseenter(function() {
+		$(this).css("background-image","url(site_media/images/peers/prek/popefam.jpg)");
+	}).mouseleave(function() {
+		$(this).css("background-image","url(site_media/images/peers/prek/joanna.jpg)");
+	});
+});
+
+</script>
 {% endblock %}
 
 {% block content %}
+<h1>My Peers</h1>
 <div class="controls">
 	<form class="form-horizontal" role="form">
 	  <div class="form-group">
 	    <label for="group-select" class="col-sm-1 control-label">Group:</label>
 	    <div class="col-sm-11">
 	    	<select id="group-select" class="input-lg form-control">
-				<option>Ms. Creevey's Pre-K Class</option>
-				<option>Saltsville Daycare Playgroup A</option>
+				<option id='pre-k'>Ms. Creevey's Pre-K Class</option>
+				<option id='daycare'>Saltsville Daycare Playgroup A</option>
 			</select>
 	    </div>
 	  </div>
@@ -27,183 +75,307 @@
 	<input type="text" class="form-control input-lg" placeholder="Search for a peer or family...">
 </div>
 
-<div class="container peers">
-  <div class="row">
-    <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/ella.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Ella Brown</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
 
-    <div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/hannah.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Hannah Macquire</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+<div class="container peers ">
+  	<div class="row pre-k">
+	    <div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/ella.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Ella Brown</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/shana.jpeg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Shana Downey</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/shana.jpeg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Shana Downey</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/tommy.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Tommy Rosenberg</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/catherine.jpeg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Catherine Huffman</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/joseph.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Joseph Hugener</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div id="derek" class="panel-body" style="background-image: url(site_media/images/peers/prek/derek.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Derek Jacobs</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/helena.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Helena Vazov</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/joseph.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Joseph Hugener</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/vivek.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Vivek Rao</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	    <div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/hannah.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Hannah Macquire</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/max.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Max Thompson</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div id="joanna" class="panel-body" style="background-image: url(site_media/images/peers/prek/joanna.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Joanna Pope</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/derek.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Derek Jacobs</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/vivek.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Vivek Rao</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/joanna.jpg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Joanna Pope</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/tommy.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Tommy Rosenberg</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
 
- 	<div class="panel panel-default">
- 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/catherine.jpeg)">
- 			<div class="gradient">
- 				<div class="info">
- 					<div class="title">Catherine Huffman</div>
- 				</div>
- 			</div>
- 		</div>
- 		<div class="panel-heading">
- 			<label>Parents:</label> Judy and Sunny
- 			<label>Phone Number:</label> (617) 255-5555
- 			<label>Address:</label> 1354 Devonshire Road
- 			<button class="btn view-events-btn">View Events</button>
- 		</div>
- 	</div>
-</div>
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/max.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Max Thompson</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/helena.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Helena Vazov</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+	</div>
+
+
+
+
+
+
+
+  	<div class="row daycare">
+	    <div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/sammy.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Sammy Allen</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/stephen.jpeg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Stephen Brown</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/elsa.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Elsa Manchester</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/chris.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Chris Olson</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/julia.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Julia Reagan</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	    <div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/amy.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Amy Tyler</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+	 	<div class="panel panel-default">
+	 		<div class="panel-body" style="background-image: url(site_media/images/peers/daycare/brandon.jpg)">
+	 			<div class="gradient">
+	 				<div class="info">
+	 					<div class="title">Brandon Zimmerman</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		<div class="panel-heading">
+	 			<label>Parents:</label> Judy and Sunny
+	 			<label>Phone Number:</label> (617) 255-5555
+	 			<label>Address:</label> 1354 Devonshire Road
+	 			<button class="btn view-events-btn">View Events</button>
+	 		</div>
+	 	</div>
+
+
+
+  	</div>
 </div>
 {% endblock %}

@@ -20,22 +20,26 @@ body
 
 .navbar
 	background-color #7E45D3
-	
-	li
-		&.active
-			.section-name
-				text-decoration underline
+
+	a
+	button
+		color #fff
+		font-size 24px
+		font-family: 'Waiting for the Sunrise', cursive;
+		font-family: 'Sniglet', cursive;
+
+		&:hover
+			color #6D9DD1
+			color #E7E737
+
+	.active
+		background-color #fff
 
 		a
-		button
-			color #fff
-			font-size 24px
-			font-family: 'Waiting for the Sunrise', cursive;
-			font-family: 'Sniglet', cursive;
+			color purple
 
-			&:hover
-				color #6D9DD1
-				color #E7E737
+		&#plan-nav
+			color blue
 
 .nav.navbar-nav > li > a:hover
 	background-color #7E45D3
@@ -47,10 +51,10 @@ body
 .btn.plan-btn
 	background-color #65A7EE
 	padding 6px 12px 3px
-	margin-top 6px
+	margin 12px 20px
 
-.plan-item
-	margin-left 10px
+	&.active
+		background-color #fff
 
 .btn.profile-pic
 	font-size 32px
@@ -65,7 +69,7 @@ body
 		text-align center
 
 .controls
-	label
+	.control-label
 		padding 10px
 		margin-bottom 10px
 
@@ -79,7 +83,28 @@ body
 		opacity 1
 
 #show-all-info
-	width 132px
+	width 182px
+	float right
+
+#peer-filter
+	display none
+
+.clearfix
+	clear both
+
+.filter-options
+	height 50px
 
 .panel-body
 	cursor pointer
+
+.event-header
+	h1
+		margin 0
+		float left
+
+.header
+	margin 20px 0 10px
+
+.radio-inline
+	height 30px

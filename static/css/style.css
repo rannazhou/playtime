@@ -16,20 +16,26 @@ body {
 .navbar {
   background-color: #7e45d3;
 }
-.navbar li.active .section-name {
-  text-decoration: underline;
-}
-.navbar li a,
-.navbar li button {
+.navbar a,
+.navbar button {
   color: #fff;
   font-size: 24px;
   font-family: 'Waiting for the Sunrise', cursive;
   font-family: 'Sniglet', cursive;
 }
-.navbar li a:hover,
-.navbar li button:hover {
+.navbar a:hover,
+.navbar button:hover {
   color: #6d9dd1;
   color: #e7e737;
+}
+.navbar .active {
+  background-color: #fff;
+}
+.navbar .active a {
+  color: #7e45d3;
+}
+.navbar .active#plan-nav {
+  color: #65a7ee;
 }
 .nav.navbar-nav > li > a:hover {
   background-color: #7e45d3;
@@ -41,10 +47,10 @@ body {
 .btn.plan-btn {
   background-color: #65a7ee;
   padding: 6px 12px 3px;
-  margin-top: 6px;
+  margin: 12px 20px;
 }
-.plan-item {
-  margin-left: 10px;
+.btn.plan-btn.active {
+  background-color: #fff;
 }
 .btn.profile-pic {
   font-size: 32px;
@@ -58,7 +64,7 @@ body {
   padding-top: 10px;
   text-align: center;
 }
-.controls label {
+.controls .control-label {
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -72,8 +78,28 @@ body {
   opacity: 1;
 }
 #show-all-info {
-  width: 132px;
+  width: 182px;
+  float: right;
+}
+#peer-filter {
+  display: none;
+}
+.clearfix {
+  clear: both;
+}
+.filter-options {
+  height: 50px;
 }
 .panel-body {
   cursor: pointer;
+}
+.event-header h1 {
+  margin: 0;
+  float: left;
+}
+.header {
+  margin: 20px 0 10px;
+}
+.radio-inline {
+  height: 30px;
 }

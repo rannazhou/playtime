@@ -94,3 +94,12 @@
 .view-events-btn {
 
 }
+
+.attending {
+	display: inline-block;
+	height: 2em;
+	width: 2em;
+	background-size: cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}

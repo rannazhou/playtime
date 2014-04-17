@@ -95,6 +95,15 @@
 
 }
 
+.attending {
+	display: inline-block;
+	height: 2em;
+	width: 2em;
+	background-size: cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
 #derek:hover {
 	background-image: url(site_media/images/peers/prek/fam_jacobs.jpg) !important;
 }

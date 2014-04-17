@@ -42,23 +42,24 @@ $(document).on("click", "#by-peer", function() {
 
 
 {% block content %}
-<h1 class="event-header">Find something to do!</h1>
- 
-<button id="show-all-info" class="btn btn-primary btn-lg show-state">Show all event info</button>
+<div class="event-header header">
+	<h1>Find something to do!</h1>
+	<button id="show-all-info" class="btn btn-primary btn-lg show-state">Show all event info</button>
+ </div>
 
 <div class="clearfix"></div>
 <div class="controls">
 	<div class="filters">
-		<label>Filter events by:</label>
-		<div class="radio-inline">
+		<label class="control-label">Filter events by:</label>
+		<div class="radio-inline" id="by-group">
 			<label>
-				<input type="radio" name="filter-type" id="by-group" value="by-group" checked>
+				<input type="radio" name="filter-type" value="by-group" checked>
 				Group
 			</label>
 		</div>
-		<div class="radio-inline">
+		<div class="radio-inline" id="by-peer">
 			<label>
-				<input type="radio" name="filter-type" id="by-peer" value="by-group">
+				<input type="radio" name="filter-type" value="by-group">
 				Peer
 			</label>
 		</div>

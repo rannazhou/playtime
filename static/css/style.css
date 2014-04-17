@@ -58,7 +58,7 @@ body {
   padding-top: 10px;
   text-align: center;
 }
-.controls label {
+.controls .control-label {
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -78,9 +78,6 @@ body {
 #peer-filter {
   display: none;
 }
-.event-header {
-  float: left;
-}
 .clearfix {
   clear: both;
 }
@@ -89,4 +86,14 @@ body {
 }
 .panel-body {
   cursor: pointer;
+}
+.event-header h1 {
+  margin: 0;
+  float: left;
+}
+.header {
+  margin: 20px 0 10px;
+}
+.radio-inline {
+  height: 30px;
 }

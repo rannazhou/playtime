@@ -11,6 +11,12 @@ def show_events(request):
 	}
 	return render(request, 'events.html', temp_vars)
 
+def events_plus(request):
+	temp_vars = {
+		"page_name": "events"
+	}
+	return render(request, 'events-plus.html', temp_vars)
+
 def show_peers(request):
 	temp_vars = {
 		"page_name": "peers"

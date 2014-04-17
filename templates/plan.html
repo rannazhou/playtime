@@ -3,30 +3,40 @@
 {% block title %}Playtime: Plan an event{% endblock %}
 
 {% block css %}
-<link type="text/css" rel="stylesheet" href="site_media/jquery-ui-1.10.4.custom/development-bundle/themes/smoothness/jquery-ui.css">
 <link type="text/css" href="site_media/css/image-picker.css" rel="stylesheet">
 <link type="text/css" href="site_media/css/jquery.timepicker.css" rel="stylesheet">
 <link type="text/css" href="site_media/css/plan.css" rel="stylesheet">
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript" src="site_media/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
 <script type="text/javascript" src="site_media/js/image-picker.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.timepicker.js"></script>
 <script>
 $(function() {
-	$( "#end_date" ).datepicker();
+	$( "#end_date" ).datepicker('setDate', new Date());
 
 	$( "#start_date" ).datepicker({
     	altField: "#end_date",
     	altFormat: "mm/dd/yy"
     });
 
+    $( "#start_date" ).datepicker('setDate', new Date());
+
     $(".time").timepicker({'timeFormat': 'h:i A'});
 
     $(".image-picker").imagepicker({
     	hide_select:false
     });
+
+    //set example new event
+    $("#name").val("Sweater drive!"); 
+    $("#description").val("Help us keep the homeless and underprivileged in our community warm next winter by donating your old sweaters and outerwear. Drop your donations off in the cafeteria throughout the school day!");
+    $("#location").val("School Cafeteria"); 
+    $("#start_date").val("05/26/2014"); 
+    $("#start_time").val("09:00 AM");
+    $("#end_date").val("05/26/2014");  
+    $("#end_time").val("03:00 PM");
+
 });
 </script>
 {% endblock %}
@@ -55,7 +65,7 @@ $(function() {
 			</div>
 
 			<div class="checkbox input-lg">
-				<input type="checkbox" value="Saltsville Daycare Playgroup A">Saltsville Daycare Playgroup A
+				<input type="checkbox" value="Saltsville Daycare Playgroup A" checked=true>Saltsville Daycare Playgroup A
 			</div>
 		</div>
 	</div>

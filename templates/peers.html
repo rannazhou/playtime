@@ -8,6 +8,7 @@
 
 
 {% block js %}
+<script type="text/javascript" src="site_media/js/peer-search.js"></script>
 <script> 
 $(document).ready(function($) {
 	$(".panel-heading").hide();
@@ -60,7 +61,7 @@ $(document).ready(function($) {
 {% block content %}
 <div class="row">
 	<div class="col-sm-12">
-		<h1>My Peers</h1>
+		<h1>Find someone to play with!</h1>
 	</div>
 </div>
 <div class="controls row">
@@ -76,7 +77,7 @@ $(document).ready(function($) {
 			 </form>
 		</div>
 		<div class="col-sm-6">
-			<input type="text" class="form-control input-lg" placeholder="Search for a peer...">
+			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Search for a peer...">
 	  	</div>
 
 </div>

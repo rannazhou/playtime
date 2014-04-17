@@ -18,26 +18,62 @@ $(document).on("click", ".group-filter", function() {
 
 $(document).on("click", "#show-all-info", function() {
 	if ($(this).hasClass("show-state")) {
-		$(this).removeClass("show-state").addClass("hide-state").html("Hide all info");
+		$(this).removeClass("show-state").addClass("hide-state").html("Hide all event info");
 		$(".panel-heading").slideDown();
 	} else {
-		$(this).addClass("hide-state").addClass("show-state").html("Show all info");
+		$(this).addClass("hide-state").addClass("show-state").html("Show all event info");
 		$(".panel-heading").slideUp();
 	}
 });
+
+// TODO: animations for show/hide
+$(document).on("click", "#by-group", function() {
+	$("#peer-filter").hide();
+	$("#group-filters").show();
+});
+
+$(document).on("click", "#by-peer", function() {
+	$("#group-filters").hide();
+	$("#peer-filter").show();
+});
+
 </script>
 {% endblock %}
 
 
 {% block content %}
+<h1 class="event-header">Find something to do!</h1>
+ 
+<button id="show-all-info" class="btn btn-primary btn-lg show-state">Show all event info</button>
+
+<div class="clearfix"></div>
 <div class="controls">
 	<div class="filters">
-		<label>Showing events for:</label>
-		<span class="label group-filter label-success active">Ms. Creevey's Pre-K Class</span>
-		<span class="label group-filter label-warning active">Saltsville Daycare Playgroup A</span>
+		<label>Filter events by:</label>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" name="filter-type" id="by-group" value="by-group" checked>
+				Group
+			</label>
+		</div>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" name="filter-type" id="by-peer" value="by-group">
+				Peer
+			</label>
+		</div>
+		<br/> 
+
+		<div class="filter-options" id="group-filters">
+			<span class="label group-filter label-success active">Ms. Creevey's Pre-K Class</span>
+			<span class="label group-filter label-warning active">Saltsville Daycare Playgroup A</span>
+		</div>
+
+		<div class="filter-options" id="peer-filter">
+			<input type="text" class="form-control input-lg" placeholder="Search for a peer...">
+		</div>
 	</div>
-	<input type="text" class="form-control input-lg" placeholder="Search for a peer, family, or event...">
-	<p><button id="show-all-info" class="btn btn-primary btn-lg show-state">Show all info</button></p>
+
 
 </div>
 

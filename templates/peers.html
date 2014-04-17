@@ -58,25 +58,31 @@ $(document).ready(function($) {
 {% endblock %}
 
 {% block content %}
-<h1>My Peers</h1>
-<div class="controls">
-	<form class="form-horizontal" role="form">
-	  <div class="form-group">
-	    <label for="group-select" class="col-sm-1 control-label">Group:</label>
-	    <div class="col-sm-11">
-	    	<select id="group-select" class="input-lg form-control">
-				<option id='pre-k'>Ms. Creevey's Pre-K Class</option>
-				<option id='daycare'>Saltsville Daycare Playgroup A</option>
-			</select>
-	    </div>
-	  </div>
-	 </form>
+<div class="row">
+	<div class="col-sm-12">
+		<h1>Find someone to play with!</h1>
+	</div>
+</div>
+<div class="controls row">
+	    <div class="col-sm-6">
+			<form class="form-horizontal" role="form">
+			  	<div class="form-group">
+				    <label for="group-select" class="col-sm-2 control-label group-label">Group:</label>
+			    	<select id="group-select" class="col-sm-10 input-lg">
+						<option id='pre-k'>Ms. Creevey's Pre-K Class</option>
+						<option id='daycare'>Saltsville Daycare Playgroup A</option>
+					</select>
+		    	</div>
+			 </form>
+		</div>
+		<div class="col-sm-6">
+			<input type="text" class="form-control input-lg" placeholder="Search for a peer...">
+	  	</div>
 
-	<input type="text" class="form-control input-lg" placeholder="Search for a peer or family...">
 </div>
 
 
-<div class="container peers ">
+<div class="peers ">
   	<div class="row pre-k">
 	    <div class="panel panel-default">
 	 		<div class="panel-body" style="background-image: url(site_media/images/peers/prek/ella.jpg)">

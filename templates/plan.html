@@ -15,12 +15,14 @@
 <script type="text/javascript" src="site_media/js/jquery.timepicker.js"></script>
 <script>
 $(function() {
-	$( "#end_date" ).datepicker();
+	$( "#end_date" ).datepicker('setDate', new Date());
 
 	$( "#start_date" ).datepicker({
     	altField: "#end_date",
     	altFormat: "mm/dd/yy"
     });
+
+    $( "#start_date" ).datepicker('setDate', new Date());
 
     $(".time").timepicker({'timeFormat': 'h:i A'});
 

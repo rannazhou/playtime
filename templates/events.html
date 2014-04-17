@@ -11,10 +11,10 @@ $(document).on("click", ".group-filter", function() {
 	var whichGroup = $(this).attr("id");
 	if ($(this).hasClass("active")) {
 		$(this).removeClass("active");
-		$(".panel."+whichGroup).hide();
+		$(".panel."+whichGroup).fadeOut();
 	} else {
 		$(this).addClass("active");
-		$(".panel."+whichGroup).show();
+		$(".panel."+whichGroup).fadeIn();
 	}
 });
 
@@ -143,7 +143,7 @@ $(document).ready(function($) {
  		</div>
  	</div>
 
- 	<div class="panel panel-default">
+ 	<div class="panel panel-default daycare">
  		<div class="panel-body" style="background-image: url(site_media/images/events/icecreampicnic.jpg)">
  			<div class="gradient">
  				<div class="info">

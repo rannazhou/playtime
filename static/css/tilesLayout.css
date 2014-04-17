@@ -94,3 +94,11 @@
 .view-events-btn {
 
 }
+
+#derek:hover {
+	background-image: url(site_media/images/peers/prek/fam_jacobs.jpg) !important;
+}
+
+#joanna:hover {
+	background-image: url(site_media/images/peers/prek/fam_pope.jpg) !important;
+}

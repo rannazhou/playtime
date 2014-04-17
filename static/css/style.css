@@ -103,3 +103,9 @@ body {
 .radio-inline {
   height: 30px;
 }
+.form-horizontal .control-label.group-label {
+  text-align: left;
+}
+.form-horizontal .form-group {
+  margin: 0 0 15px 0;
+}

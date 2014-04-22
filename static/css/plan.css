@@ -2,3 +2,9 @@
 	max-width: 100px;
 	max-height: 100px;
 }
+
+ul.thumbnails.image_picker_selector{
+	width: 848px;
+	height: 146px;
+	overflow: scroll; 
+}

@@ -7,7 +7,9 @@
 {% endblock %}
 
 {% block js %}
+<script type="text/javascript" src="site_media/js/peer-search.js"></script>
 <script>
+
 $(document).on("click", ".group-filter", function() {
 	var whichGroup = $(this).attr("id");
 	if ($(this).hasClass("active")) {
@@ -92,7 +94,7 @@ $(document).ready(function($) {
 		</div>
 
 		<div class="filter-options" id="peer-filter">
-			<input type="text" class="form-control input-lg" placeholder="Search for a peer...">
+			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Search for a peer...">
 		</div>
 	</div>
 

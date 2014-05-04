@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-
+from playtime.app.models import Buddy, Event
 
 def index(request):
 	# TODO: route to a different page if logged out?
@@ -18,8 +18,10 @@ def events_plus(request):
 	return render(request, 'events-plus.html', temp_vars)
 
 def show_peers(request):
+	# TODO: filter by group
+	buddies = Buddy.objects.all()
 	temp_vars = {
-		"page_name": "peers"
+		"page_name": buddies
 	}
 	return render(request, 'peers.html', temp_vars)
 

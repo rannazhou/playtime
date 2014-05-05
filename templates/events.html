@@ -4,12 +4,10 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
-<link rel="stylesheet" type="text/css" href="site_media/css/tooltipster.css" />
 {% endblock %}
 
 {% block js %}
 <script type="text/javascript" src="site_media/js/peer-search.js"></script>
-<script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
 <script>
 
 $(document).on("click", ".group-filter", function() {
@@ -63,8 +61,8 @@ $(document).ready(function($) {
 });
 
 $(document).ready(function() {
-	$(".attending").tooltipster({
-		content: $('<span><strong>Name<br>Groups</strong></span>')
+	$(".attending").tooltip({
+		html: $('<span><strong>Name<br>Groups</strong></span>')
 	});
 });
 </script>

@@ -10,7 +10,6 @@ def show_events(request):
 	temp_vars = {
 		"page_name": "events",
 		"events": events
-
 	}
 	return render(request, 'events.html', temp_vars)
 

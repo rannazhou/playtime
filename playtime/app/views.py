@@ -6,8 +6,11 @@ def index(request):
 	return redirect(show_events)
 
 def show_events(request):
+	events = Event.objects.all()
 	temp_vars = {
-		"page_name": "events"
+		"page_name": "events",
+		"events": events
+
 	}
 	return render(request, 'events.html', temp_vars)
 

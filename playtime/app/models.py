@@ -18,6 +18,7 @@ class Event(models.Model):
 	location = models.CharField(max_length=100)
 	created_by = models.ForeignKey('Buddy')
 	description = models.TextField()
+	photo = models.ImageField(upload_to='events/')	
 
 class Group(models.Model):
 	name = models.CharField(max_length=50)

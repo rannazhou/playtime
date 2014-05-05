@@ -21,7 +21,8 @@ def show_peers(request):
 	# TODO: filter by group
 	buddies = Buddy.objects.all()
 	temp_vars = {
-		"page_name": buddies
+		"page_name": "buddies",
+		"buddies": buddies
 	}
 	return render(request, 'peers.html', temp_vars)
 

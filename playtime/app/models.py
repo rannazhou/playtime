@@ -17,10 +17,15 @@ class Event(models.Model):
 	end_time = models.TimeField()
 	location = models.CharField(max_length=100)
 	created_by = models.ForeignKey('Buddy')
+	description = models.TextField()
 
 class Group(models.Model):
 	name = models.CharField(max_length=50)
 
-class Membership(models.Model):
+class GroupMembership(models.Model):
 	child = models.ForeignKey('Buddy')
 	group = models.ForeignKey('Group')
+
+class EventAttendee(models.Model):
+	child = models.ForeignKey('Buddy')
+	event = models.ForeignKey('Event')

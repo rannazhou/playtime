@@ -1,16 +1,23 @@
-{% extends "tiles.html" %}
+{% extends "base.html" %}
 
 {% block title %}Playtime: Events{% endblock %}
 
 {% block css %}
+<link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
 <link rel="stylesheet" type="text/css" href="site_media/css/tooltipster.css" />
 {% endblock %}
 
-{% block tile_js %}
+{% block js %}
 <script type="text/javascript" src="site_media/js/peer-search.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
+<script> 
+$(document).ready(function($) {
+	$(".panel-heading").hide();
+	$(".panel-body").click(function() {
+		$(this).parent(".panel").find(".panel-heading").slideToggle();
+	});
+});
 
-<script>
 $(document).on("click", "#show-all-info", function() {
 	if ($(this).hasClass("show-state")) {
 		$(this).removeClass("show-state").addClass("hide-state").html("Hide all event info");

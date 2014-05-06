@@ -1,7 +1,10 @@
-{% extends "base.html" %}
+{% extends "tiles.html" %}
 
 {% block title %}Playtime: Events{% endblock %}
 
+<<<<<<< HEAD
+{% block tile_js %}
+=======
 {% block css %}
 <link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
 <link rel="stylesheet" type="text/css" href="site_media/css/tooltipster.css" />
@@ -10,20 +13,8 @@
 {% block js %}
 <script type="text/javascript" src="site_media/js/peer-search.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
+
 <script>
-
-$(document).on("click", ".group-filter", function() {
-	var whichGroup = $(this).attr("id");
-	if ($(this).hasClass("active")) {
-		$(this).removeClass("active");
-		$(".panel."+whichGroup).fadeOut();
-	} else {
-		$(this).addClass("active");
-		$(".panel."+whichGroup).fadeIn();
-	}
-
-});
-
 $(document).on("click", "#show-all-info", function() {
 	if ($(this).hasClass("show-state")) {
 		$(this).removeClass("show-state").addClass("hide-state").html("Hide all event info");
@@ -34,17 +25,6 @@ $(document).on("click", "#show-all-info", function() {
 	}
 });
 
-// TODO: animations for show/hide
-$(document).on("click", "#by-group", function() {
-	$("#peer-filter").hide();
-	$("#group-filters").show();
-});
-
-$(document).on("click", "#by-peer", function() {
-	$("#group-filters").hide();
-	$("#peer-filter").show();
-});
-
 $(document).on("click", ".join-btn", function() {
 	$(this).toggleClass("btn-success");
 	$(this).text(function(i, text){
@@ -52,20 +32,6 @@ $(document).on("click", ".join-btn", function() {
 	});
 	// this stops the click from propogating to the parent
 	return false;
-});
-
-$(document).on("click", ".panel-body", function() {
-	$(this).parent(".panel").find(".panel-heading").slideToggle();
-});
-
-$(document).ready(function($) {
-	$(".panel-heading").hide();
-});
-
-$(document).ready(function() {
-	$(".attending").tooltipster({
-		content: $('<span><strong>Name<br>Groups</strong></span>')
-	});
 });
 </script>
 {% endblock %}
@@ -109,6 +75,33 @@ $(document).ready(function() {
 
 </div>
 
+<<<<<<< HEAD
+{% block tiles %}
+	{% for event in events %}
+	<div class="event panel panel-default">
+		<div class="panel-body" style="background-image: url( /site_media/images/{{event.photo.name}} )">
+			<div class="gradient">
+				<div class="info">
+					<div class="title">{{ event.title }}</div>
+					<div class="time">{{ event.date|date:"D, M d, Y"}} <br/> {{ event.start_time|time:"P"}} to {{ event.end_time|time:"P"}}</div>
+				</div>
+				<button class="btn join-btn">Join</button>
+			</div>
+		</div>
+		<div class="panel-heading">
+			<div><label>Created by:</label> The {{ event.created_by.last_name }}s </div>
+			<div><label>Location:</label> {{ event.location }} </div>
+			<div><label>Description:</label> {{ event.description }}</div>
+			<div><label>Attending: </label>
+				{% for buddy in event.attendee_list %}
+				<div class="attending" style="background-image: url( /site_media/images/{{buddy.photo.name }} )"></div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}
+=======
 <div class="container events">
   <div class="row">
     <div class="panel panel-default pre-k catherine lily max vivek">
@@ -259,4 +252,5 @@ $(document).ready(function() {
 
 </div>
 </div>
+>>>>>>> 16525db7c35442d5dc4ddfb49ed84909b3afcbaa
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript" src="site_media/js/peer-search.js"></script>
+<script> 
+$(document).ready(function($) {
+	$(".panel-heading").hide();
+	$(".panel-body").click(function() {
+		$(this).parent(".panel").find(".panel-heading").slideToggle();
+	});
+});
+
+</script>
+{% endblock %}
+{% block tile_js %}
+{% endblock %}
+
+
+{% block content %}
+{% block tiles %}
+{% endblock %}
+{% endblock %}

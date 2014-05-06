@@ -84,11 +84,11 @@
 	white-space: normal;
 }
 
-.title {
+.event .title {
 	padding: 1ex 1em;
 }
 
-.peer.title {
+.peer .title {
 	padding: 0 1em;
 }
 

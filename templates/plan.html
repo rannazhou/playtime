@@ -37,6 +37,10 @@ $(function() {
     $("#end_date").val("05/26/2014");  
     $("#end_time").val("03:00 PM");
 
+    window.onbeforeunload = function () {
+    	return ''
+    };
+
 });
 </script>
 {% endblock %}
@@ -50,7 +54,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type='text' class="form-control input-lg" id="name">
+			<input type='text' class="form-control input-lg" id="name" name="title">
 		</div>
 	</div>
 
@@ -76,7 +80,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<textarea class="form-control" rows="4" id="description"></textarea>
+			<textarea class="form-control" rows="4" id="description" name="description"></textarea>
 		</div>
 	</div>
 
@@ -108,7 +112,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type="text" class="form-control input-lg" id="location">
+			<input type="text" class="form-control input-lg" id="location" name="location">
 		</div>
 	</div>
 
@@ -119,7 +123,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-4">
-			<input type='text' class="form-control text-center input-lg" id="start_date">
+			<input type='text' class="form-control text-center input-lg" id="start_date" name="date">
 		</div>
 
 		<div class="form-group col-md-1 text-center input-lg">
@@ -127,7 +131,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-4">
-			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time">
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time">
 		</div>
 
 	</div>
@@ -147,7 +151,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-4">
-			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time">
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time">
 		</div>
 
 	</div>

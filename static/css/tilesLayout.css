@@ -103,3 +103,7 @@
     background-position:center;
     background-repeat:no-repeat;
 }
+
+.event_change{
+	position:absolute;
+}

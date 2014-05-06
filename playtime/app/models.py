@@ -16,17 +16,12 @@ class Event(models.Model):
 	start_time = models.TimeField()
 	end_time = models.TimeField()
 	location = models.CharField(max_length=100)
-	created_by = models.ForeignKey('Buddy')
+	created_by = models.ForeignKey(Buddy, related_name='events_created')
 	description = models.TextField()
-	photo = models.ImageField(upload_to='events/')	
+	photo = models.ImageField(upload_to='events/')
+	attendees = models.ManyToManyField(Buddy, related_name='events_attending')
 
 class Group(models.Model):
 	name = models.CharField(max_length=50)
-
-class GroupMembership(models.Model):
-	child = models.ForeignKey('Buddy')
-	group = models.ForeignKey('Group')
-
-class EventAttendee(models.Model):
-	child = models.ForeignKey('Buddy')
-	event = models.ForeignKey('Event')
+	members = models.ManyToManyField(Buddy)
+	events = models.ManyToManyField(Event)

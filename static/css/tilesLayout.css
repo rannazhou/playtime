@@ -1,4 +1,4 @@
-.events .row{
+/*.events .row{
 	-moz-column-width: 25em;
 	-webkit-column-width: 25em; 
 	-moz-column-gap: 1em;
@@ -16,7 +16,11 @@
 	display: inline-block;
 	width:98%;
 }
+*/
 
+.panel {
+	float:left;
+}
 .panel-body {
 	background-size: cover;
     background-position:center;
@@ -24,11 +28,20 @@
     padding: 0;
 }
 
-.events .panel-body {
+.event .panel-heading {
+	width: 25em;
+}
+.peer .panel-heading {
+	width: 16em;
+}
+
+.event .panel-body {
+	width: 25em;
 	height: 25em;
 }
 
-.peers .panel-body {
+.peer .panel-body {
+	width: 16em;
 	height: 16em;
 }
 
@@ -39,12 +52,12 @@
 	width: 100%;
 }
 
-.events .gradient {
+.event .gradient {
 	bottom: -16em;
 	height: 9em;
 }
 
-.peers .gradient {
+.peer .gradient {
 	bottom: -11em;
 	height: 5em;
 }
@@ -55,11 +68,11 @@
 	color: #fff;
 }
 
-.events .info {
+.event .info {
 	width: 70%;
 }
 
-.peers .info {
+.peer .info {
 	width: 100;
 	text-align: center;
 }
@@ -71,11 +84,11 @@
 	white-space: normal;
 }
 
-.events .title {
+.title {
 	padding: 1ex 1em;
 }
 
-.peers .title {
+.peer.title {
 	padding: 0 1em;
 }
 

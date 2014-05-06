@@ -82,6 +82,14 @@ $(document).on("click", ".join-btn", function() {
 {% for event in events %}
 <div class="event panel panel-default">
 	<div class="panel-body" style="background-image: url( /site_media/images/{{event.photo.name}} )">
+		<div style="float:right;">
+			<button type="button" class="btn btn-default btn-lg">
+				<span class="glyphicon glyphicon-pencil edit"></span>
+			</button>
+			<button type="button" class="btn btn-default btn-lg">
+				<span class="glyphicon glyphicon-trash delete"></span>
+			</button>
+		</div>
 		<div class="gradient">
 			<div class="info">
 				<div class="title">{{ event.title }}</div>

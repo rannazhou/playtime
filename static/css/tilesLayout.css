@@ -20,6 +20,7 @@
 
 .panel {
 	float:left;
+	margin: 1em 1em 1em 1em;
 }
 .panel-body {
 	background-size: cover;

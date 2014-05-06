@@ -16,7 +16,6 @@ $(document).ready(function($) {
 		$(this).parent(".panel").find(".panel-heading").slideToggle();
 	});
 });
-
 </script>
 {% endblock %}
 
@@ -50,7 +49,7 @@ $(document).ready(function($) {
 	<div class="panel-body" style="background-image: url( /site_media/images/{{buddy.photo.name }})">
 		<div class="gradient">
 			<div class="info">
-				<div class="title">{{buddy.name}}</div>
+				<div class="title">{{buddy.first_name}} {{buddy.last_name}}</div>
 			</div>
 		</div>
 	</div>

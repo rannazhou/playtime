@@ -95,8 +95,8 @@ $(document).on("click", ".join-btn", function() {
 		<div><label>Location:</label> {{ event.location }} </div>
 		<div><label>Description:</label> {{ event.description }}</div>
 		<div><label>Attending: </label>
-			{% for buddy in event.attendee_list %}
-			<div class="attending" style="background-image: url( /site_media/images/{{buddy.photo.name }} )"></div>
+			{% for buddy in event.attendees.all %}
+			<div class="attending" style="background-image: url( /site_media/images/{{buddy.photo.name}})"></div>
 			{% endfor %}
 		</div>
 	</div>

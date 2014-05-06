@@ -28,9 +28,19 @@ $(function() {
     	hide_select:false
     });
 
-    window.onbeforeunload = function () {
-    	return ''
-    };
+    // window.onbeforeunload = function () {
+    // 	return ''
+    // };
+
+   $("#create_event").click(function(){
+	    window.btn_clicked = true;       /*or use addEventListener ↑ */
+	});
+
+	window.onbeforeunload = function(){
+	    if(!window.btn_clicked){
+	        return 'You must click "Create Event" to finish creating a new event. If you leave now you will lose all information';
+	    }
+	};
 
 });
 </script>

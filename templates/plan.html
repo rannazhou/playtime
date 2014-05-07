@@ -38,8 +38,9 @@ $(function() {
 	});
 
 	window.onbeforeunload = function(){
+
 	    if(!window.btn_clicked){
-	        return 'You must click "Create Event" to finish creating a new event. If you leave now you will lose all information';
+	        return 'You have unsaved information! Are you sure you want to leave this page?';
 	    }
 	};
 
@@ -69,8 +70,8 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9" id="groups">
-			<input type="checkbox" name="groups[]" value="2" data-validation-minchecked-minchecked="1" data-validation-minchecked-message="You must invite at least one group.">Ms. Creevy's Pre-K Class
-			<input type="checkbox" name="groups[]" value="1">Saltsville Daycare Playgroup A
+			<div class="input-lg"><input type="checkbox" name="groups[]" value="2" data-validation-minchecked-minchecked="1" data-validation-minchecked-message="You must invite at least one group."> Ms. Creevy's Pre-K Class</div>
+			<div class="input-lg"><input type="checkbox" name="groups[]" value="1"> Saltsville Daycare Playgroup A</div>
 		</div>
 	</div>
 
@@ -119,7 +120,7 @@ $(function() {
 	<div class="row">
 
 		<div class="form-group col-md-3 input-lg">
-			<label> Date:</label>
+			<label> Date and Time:</label>
 		</div>
 
 		<div class="form-group col-md-3">
@@ -127,11 +128,11 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-3">
-			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time" required>
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time" placeholder="Start time" required>
 		</div>
 
 		<div class="form-group col-md-3">
-			to <input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time" required>
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time" placeholder="End time" required>
 		</div>
 
 	</div>

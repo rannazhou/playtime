@@ -26,10 +26,12 @@ body {
 }
 .navbar a:hover,
 .navbar button:hover {
-  color: #6d9dd1;
   color: #e7e737;
 }
 .navbar .active {
+  background-color: #fff;
+}
+.navbar .activev a:hover {
   background-color: #fff;
 }
 .navbar .active a {

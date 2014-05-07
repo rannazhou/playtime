@@ -128,6 +128,16 @@ $(document).on("click", ".delete-event-btn", function() {
 	});
 });
 
+$(document).ready(function() {
+	$(".attendee").tooltipster({
+		content:$('<div class="panel-body" style="background-image: xxxxx"><div class="gradient"><div class="info"><div class="title">xxxxxxx</div></div></div></div>')
+	});
+});
+
+// $(".attendee").hover(function() {
+// 	var photo = $(this).css("background-image");
+// })
+
 var $container = $('#events-container');
 $container.packery({itemSelector: '.event', gutter: 10});
 

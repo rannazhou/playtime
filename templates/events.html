@@ -4,10 +4,12 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
+<link rel="stylesheet" type="text/css" href="site_media/css/tooltipster.css" />
 {% endblock %}
 
 {% block js %}
 <script type="text/javascript" src="site_media/js/peer-search.js"></script>
+<script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
 
 <script type="text/javascript" src="site_media/js/packery.pkgd.min.js"></script>
 <script type="text/javascript" src="site_media/js/bootbox.min.js"></script>
@@ -51,6 +53,7 @@ $(document).on("click", ".join-btn", function() {
 			}
 		}
 	}
+
 
 	$(this).text(function(i, text){
 		return text === "Join" ? "Joined" : "Join";
@@ -128,8 +131,11 @@ $(document).on("click", ".delete-event-btn", function() {
 	});
 });
 
-$(document).tooltip({
-	html:true
+$(document).ready(function() {
+	$(".attendee").tooltipster({
+		contentAsHTML: true,
+		content:'<div class="panel-body" style="background-image:'+$(this).css("background-image")+'"><div class="gradient"><div class="info"><div class="title">'+$(this).attr("name")+'</div></div></div></div>'
+	});
 });
 
 // $(".attendee").hover(function() {
@@ -174,7 +180,7 @@ $container.packery({itemSelector: '.event', gutter: 10});
 		</div>
 
 		<div class="filter-options" id="peer-filter">
-			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Filter by a buddy...">
+			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Search for a peer...">
 		</div>
 	</div>
 	<div id="buddy-label">
@@ -215,7 +221,7 @@ $container.packery({itemSelector: '.event', gutter: 10});
 			<div><label>Description:</label> {{ event.description }}</div>
 			<div class="attending"><label>Attending: </label>
 				{% for buddy in event.attendees.all %}
-				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})" name="{{buddy.first_name}} {{buddy.last_name}}" data-toggle="tootltip" title="<strong>Name</strong>"></div>
+				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})" name="{{buddy.first_name}} {{buddy.last_name}}"></div>
 				{% endfor %}
 			</div>
 

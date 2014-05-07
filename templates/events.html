@@ -71,6 +71,7 @@ $(document).on("click", ".edit-event-btn", function() {
 });
 
 var enterGroupFilterMode = function() {
+	$("#no-events-msg").hide();
 	$("#by-group-radio").attr('checked', 'true');
 	$("#peer-filter").hide();
 	$("#buddy-label").hide();
@@ -146,10 +147,16 @@ var displayEventsForActiveGroups = function() {
 
 var displayEventsForBuddy = function(buddy_id) {
 	$(".event").hide();
+	$("#no-events-msg").hide();
 	var url = '/get_events_for_buddy/'+buddy_id;
 	$.get(url, function(data) {
 		var events_list = data.event_ids;
-		displayEvents(events_list);
+		console.log(events_list.length);
+		if (events_list.length > 0) {
+			displayEvents(events_list);
+		} else {
+			$("#no-events-msg").show();
+		}
 	})
 }
 
@@ -209,6 +216,15 @@ $(document).ready(function() {
 			displayEventsForBuddy(id);
 		}
 	});
+
+	$("#peer-search").keydown(function() {
+		var text = $("#peer-search").val();
+		console.log(text);
+		if (text.length === 1) {
+			console.log('no text left');
+			$(".event").hide();
+		}
+	})
 })
 </script>
 {% endblock %}
@@ -298,7 +314,13 @@ $(document).ready(function() {
 		</div>
 	</div>
 	{% endfor %}
+	<div id="no-events-msg">
+		This buddy is not attending any events!
+	</div>
+
 </div>
+
+
 {% endblock %}
 
 

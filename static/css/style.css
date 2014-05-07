@@ -110,3 +110,6 @@ body {
 .form-horizontal .form-group {
   margin: 0 0 15px 0;
 }
+#no-events-msg {
+  display: none;
+}

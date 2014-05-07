@@ -35,6 +35,27 @@ $(document).ready(function($) {
 	});
 });
 
+var showBuddiesForGroup = function(group_id) {
+	$(".peer").hide();
+	var url = '/get_buddies_in_group/'+group_id;
+	$.get(url, function(data) {
+		var buddy_list = data.buddy_ids;
+		console.log(buddy_list);
+		for (var j=0; j<buddy_list.length; j++) {
+			var buddy_id = buddy_list[j];
+			$("#buddy-"+buddy_id).fadeIn();
+		}
+	});
+}
+
+$(document).ready(function() {
+	$("#group-select").change(function() {
+		console.log("changed");
+		var group_id = $(this).find(":selected").attr("data-id");
+		showBuddiesForGroup(group_id);
+	});
+});
+
 </script>
 {% endblock %}
 
@@ -50,8 +71,8 @@ $(document).ready(function($) {
 		  	<div class="form-group">
 			    <label for="group-select" class="col-sm-2 control-label group-label">Group:</label>
 		    	<select id="group-select" class="col-sm-10 input-lg">
-					<option id='pre-k'>Ms. Creevey's Pre-K Class</option>
-					<option id='daycare'>Saltsville Daycare Playgroup A</option>
+					<option id='pre-k' data-id="2">Ms. Creevey's Pre-K Class</option>
+					<option id='daycare' data-id="1">Saltsville Daycare Playgroup A</option>
 				</select>
 	    	</div>
 		 </form>

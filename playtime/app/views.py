@@ -50,6 +50,15 @@ def get_events_for_buddy(request, buddy_id):
 	response_data = {"event_ids": event_ids}
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+def get_buddies_in_group(request, group_id):
+	group = Group.objects.get(id=group_id)
+	buddies = group.members.all()
+	buddy_ids = []
+	for buddy in buddies:
+		buddy_ids.append(buddy.id)
+	response_data = {"buddy_ids": buddy_ids}
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
+
 def show_peers(request):
 	# TODO: filter by group
 	buddies = Buddy.objects.all()

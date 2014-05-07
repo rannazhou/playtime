@@ -48,7 +48,8 @@ $(function() {
 
 
 {% block content %}
-<form role='form' class="container" action="/playtime/new_events">
+<form role='form' class="container" method="POST">
+	{% csrf_token %}
 	<div class="row">
 		<div class="form-group col-md-3 input-lg">
 			<label>Event name:</label>
@@ -66,11 +67,11 @@ $(function() {
 
 		<div class="form-group col-md-9" id="groups">
 			<div class="checkbox input-lg">
-				<input type="checkbox" value="Ms. Creevy's Pre-K Class">Ms. Creevy's Pre-K Class
+				<input type="checkbox" name="group_2" value="2">Ms. Creevy's Pre-K Class
 			</div>
 
 			<div class="checkbox input-lg">
-				<input type="checkbox" value="Saltsville Daycare Playgroup A" checked=true>Saltsville Daycare Playgroup A
+				<input type="checkbox" name="group_1" value="1" checked=true>Saltsville Daycare Playgroup A
 			</div>
 		</div>
 	</div>
@@ -92,8 +93,8 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9" style="overflow-y:scroll;">
-			<input type="file" class="input-lg" id="photo_file">
-			<select class="form-control input-lg image-picker" style="visibility:hidden;" id="default_photo">
+			<input type="file" class="input-lg" id="photo_file" name="photo">
+<!-- 			<select class="form-control input-lg image-picker" style="visibility:hidden;" id="default_photo">
 				<option value=""></option>
 				<option data-img-src="site_media/images/events/hiking.jpg" value="1">Hiking</option>
 				<option data-img-src="site_media/images/events/sweatermouse.jpg" value="2">Picnic</option>
@@ -103,7 +104,7 @@ $(function() {
 				<option data-img-src="site_media/images/events/babytiger.jpg" value="6">Image 2</option>
 				<option data-img-src="site_media/images/events/img3.jpg" value="7">Image 3</option>
 				<option data-img-src="site_media/images/events/img5.jpg" value="8">Image 4</option>
-			</select>
+			</select> -->
 		</div>
 	</div>
 

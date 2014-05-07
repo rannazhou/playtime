@@ -13,6 +13,7 @@
 <script> 
 $(document).ready(function($) {
 	$(".panel-heading").hide();
+	$("#buddy-label").hide();
 	$(".panel-body").click(function() {
 		$(this).parent(".panel").find(".panel-heading").slideToggle();
 	});
@@ -35,6 +36,18 @@ $(document).on("click", ".join-btn", function() {
 	});
 	// this stops the click from propogating to the parent
 	return false;
+});
+
+$(document).on("click", "#by-group", function() {
+	$("#peer-filter").hide();
+	$("#buddy-label").hide();
+	$("#group-filters").show();
+});
+
+$(document).on("click", "#by-peer", function() {
+	$("#group-filters").hide();
+	$("#buddy-label").hide();
+	$("#peer-filter").show();
 });
 </script>
 {% endblock %}
@@ -75,7 +88,11 @@ $(document).on("click", ".join-btn", function() {
 		</div>
 	</div>
 
-
+	<div id="buddy-label">
+		<span class="label label-default">
+			<span class="glyphicon glyphicon-remove"></span>
+		</span>
+	</div>
 </div>
 
 {% block tiles %}

@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from playtime.app.models import Buddy, Event
+from playtime.app.models import Buddy, Event, Group
+import json
+from django.http import HttpResponse
 
 def index(request):
 	# TODO: route to a different page if logged out?
@@ -12,6 +14,21 @@ def show_events(request):
 		"events": events
 	}
 	return render(request, 'events.html', temp_vars)
+
+# called via AJAX to add user to event
+def join_event(request, child_id, event_id):
+	child = Buddy.objects.get(id=child_id)
+	event = Event.objects.get(id=event_id)
+	event.attendees.add(child)
+
+def get_events_for_group(request, group_id):
+	group = Group.objects.get(id=group_id)
+	events = group.events.all()
+	event_ids = []
+	for event in events:
+		event_ids.append(event.id)
+	response_data = {"event_ids": event_ids}
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def events_plus(request):
 	temp_vars = {

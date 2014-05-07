@@ -10,12 +10,14 @@ def index(request):
 
 def show_events(request):
 	# for a real site, these would be filtered by the current user
+	current_user = Buddy.objects.get(id=13)
 	events = Event.objects.all()
 	groups = Group.objects.all()
 	temp_vars = {
 		"page_name": "events",
 		"events": events,
-		"groups": groups
+		"groups": groups,
+		"current_user": current_user
 	}
 	return render(request, 'events.html', temp_vars)
 

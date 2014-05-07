@@ -15,6 +15,7 @@
 
 <script>
 var activeGroups = ["1","2"]; // stubbed in
+var activeBuddyId;
 // var events_list = [];
 
 $(document).ready(function($) {
@@ -70,15 +71,21 @@ $(document).on("click", ".edit-event-btn", function() {
 });
 
 var enterGroupFilterMode = function() {
+	$("#by-group-radio").attr('checked', 'true');
 	$("#peer-filter").hide();
 	$("#buddy-label").hide();
 	$("#group-filters").show();
+	$(".event").fadeOut();
+	displayEventsForActiveGroups();
 }
 
 var enterBuddyFilterMode = function() {
+	$("#by-peer-radio").attr('checked', 'true');
 	$("#group-filters").hide();
 	$("#buddy-label").hide();
 	$("#peer-filter").show();
+	console.log("ACTIVE BUDDY: "+activeBuddyId);
+	displayEventsForBuddy(activeBuddyId);
 }
 
 $(document).on("click", "#by-group", function() {
@@ -175,11 +182,12 @@ $(document).on("click", ".delete-event-btn", function() {
 $(document).ready(function() {
 	var buddyId = "{{ filter_buddy.id }}";
 	console.log("BUDDY ID= "+buddyId);
-	$("#by-peer-radio").attr('checked', 'true');
 	if (buddyId.length > 0) {
+		$("#by-peer-radio").attr('checked', 'true');
+		activeBuddyId = buddyId;
 		enterBuddyFilterMode();
 		$("#peer-search").val("{{ filter_buddy.first_name }} {{ filter_buddy.last_name }}");
-		displayEventsForBuddy(buddyId);
+		displayEventsForBuddy(activeBuddyId);
 	}
 })
 </script>
@@ -198,6 +206,7 @@ $(document).ready(function() {
 		select: function() {
 			var name = $("#peer-search").val();
 			var id = buddyDict[name];
+			activeBuddyId = id;
 			displayEventsForBuddy(id);
 		}
 	});

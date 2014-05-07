@@ -43,12 +43,6 @@ def get_events_for_buddy(request, buddy_id):
 	response_data = {"event_ids": event_ids}
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
-def events_plus(request):
-	temp_vars = {
-		"page_name": "events"
-	}
-	return render(request, 'events-plus.html', temp_vars)
-
 def show_peers(request):
 	# TODO: filter by group
 	buddies = Buddy.objects.all()

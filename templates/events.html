@@ -44,8 +44,11 @@ $(document).on("click", ".join-btn", function() {
 		// add ajax call here
 	} else {
 		//remove image from attendee's list
-		for (attendee in eventPanel.find(".attending")) {
-			if (attendee.css("background-image").indexOf("stephen") > -1) {
+		alert(eventPanel.find(".attendee").first().css("background-image"));
+		for (int i=0;  eventPanel.find(".attendee")) {
+			var img = attendee.css("background-image");
+			alert(img);
+			if (img.indexOf("stephen") > -1) {
 				attendee.remove();
 			}
 		}
@@ -207,7 +210,7 @@ $container.packery({itemSelector: '.event', gutter: 10});
 			<div><label>Description:</label> {{ event.description }}</div>
 			<div class="attending"><label>Attending: </label>
 				{% for buddy in event.attendees.all %}
-				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})"></div>
+				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})" name="{{buddy.first_name}} {{buddy.last_name}}"></div>
 				{% endfor %}
 			</div>
 

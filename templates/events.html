@@ -43,7 +43,11 @@ $(document).on("click", ".join-btn", function() {
 		// add ajax call here
 	} else {
 		//remove image from attendee's list
-		// $(this).closest(".event").find(".attending").first().remove
+		for (attendee in eventPanel.find(".attending")) {
+			if (attendee.css("background-image").indexOf("stephen") > -1) {
+				attendee.remove();
+			}
+		}
 	}
 
 
@@ -52,6 +56,11 @@ $(document).on("click", ".join-btn", function() {
 	});
 
 	// this stops the click from propogating to the parent
+	return false;
+});
+
+$(document).on("click", ".edit-event-btn", function() {
+	// go to events page and get the event
 	return false;
 });
 

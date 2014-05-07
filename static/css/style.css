@@ -15,6 +15,7 @@ body {
 }
 .navbar {
   background-color: #7e45d3;
+  border-radius: 0;
 }
 .navbar a,
 .navbar button {

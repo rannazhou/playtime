@@ -26,7 +26,9 @@ $(document).ready(function() {
 			var name = $("#peer-search").val().split(" ")[0].toLowerCase();
 			console.log(name);
 			$(".panel").hide();
+			$("#peer-filter").hide();
 			$("."+name).show();
+			$("#buddy-label").show();
 		}
 	});
 })

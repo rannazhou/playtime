@@ -18,6 +18,7 @@ var activeGroups = ["1","2"]; // stubbed in
 
 $(document).ready(function($) {
 	$(".panel-heading").hide();
+	$("#buddy-label").hide();
 	$(".panel-body").click(function() {
 		$(this).parent(".panel").find(".panel-heading").slideToggle();
 	});
@@ -62,6 +63,18 @@ $(document).on("click", ".join-btn", function() {
 $(document).on("click", ".edit-event-btn", function() {
 	// go to events page and get the event
 	return false;
+});
+
+$(document).on("click", "#by-group", function() {
+	$("#peer-filter").hide();
+	$("#buddy-label").hide();
+	$("#group-filters").show();
+});
+
+$(document).on("click", "#by-peer", function() {
+	$("#group-filters").hide();
+	$("#buddy-label").hide();
+	$("#peer-filter").show();
 });
 
 $(document).on("click", ".group-filter", function(e) {
@@ -155,6 +168,11 @@ $container.packery({itemSelector: '.event', gutter: 10});
 		<div class="filter-options" id="peer-filter">
 			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Search for a peer...">
 		</div>
+	</div>
+	<div id="buddy-label">
+		<span class="label label-default">
+			<span class="glyphicon glyphicon-remove"></span>
+		</span>
 	</div>
 </div>
 

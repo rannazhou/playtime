@@ -3,18 +3,19 @@
 {% block title %}Playtime: Events{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="site_media/css/tilesLayout.css" />
-<link rel="stylesheet" type="text/css" href="site_media/css/tooltipster.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/css/tilesLayout.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/css/tooltipster.css" />
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript" src="site_media/js/peer-search.js"></script>
-<script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.tooltipster.min.js"></script>
 
-<script type="text/javascript" src="site_media/js/packery.pkgd.min.js"></script>
-<script type="text/javascript" src="site_media/js/bootbox.min.js"></script>
+<script type="text/javascript" src="/site_media/js/packery.pkgd.min.js"></script>
+<script type="text/javascript" src="/site_media/js/bootbox.min.js"></script>
+
 <script>
 var activeGroups = ["1","2"]; // stubbed in
+// var events_list = [];
 
 $(document).ready(function($) {
 	$(".panel-heading").hide();
@@ -68,16 +69,24 @@ $(document).on("click", ".edit-event-btn", function() {
 	return false;
 });
 
-$(document).on("click", "#by-group", function() {
+var enterGroupFilterMode = function() {
 	$("#peer-filter").hide();
 	$("#buddy-label").hide();
 	$("#group-filters").show();
-});
+}
 
-$(document).on("click", "#by-peer", function() {
+var enterBuddyFilterMode = function() {
 	$("#group-filters").hide();
 	$("#buddy-label").hide();
 	$("#peer-filter").show();
+}
+
+$(document).on("click", "#by-group", function() {
+	enterGroupFilterMode();
+});
+
+$(document).on("click", "#by-peer", function() {
+	enterBuddyFilterMode();
 });
 
 $(document).on("click", ".group-filter", function(e) {
@@ -96,29 +105,45 @@ $(document).on("click", ".group-filter", function(e) {
 	}
 	console.log(activeGroups);
 	$(".event").fadeOut();
-	getAndShowEvents();
+	displayEventsForActiveGroups();
 });
 
-var getAndShowEvents = function() {
-	var events_list = [];
+
+var displayEvents = function(events_list) {
+	var to_show = 
+	console.log("DISPLAY THESE EVENTS: "+events_list);
+	for (var j=0; j<events_list.length; j++) {
+		var event_id = events_list[j];
+		$("#event-"+event_id).fadeIn();
+	}
+}
+var displayEventsForActiveGroups = function() {
+	// events_list = [];
 	// get events for each group
 	for (var i=0; i < activeGroups.length; i++) {
 		var group_id = activeGroups[i];
-		var url = 'get_events_for_group/'+group_id;
+		var url = '/get_events_for_group/'+group_id;
 		$.get(url, function(data) {
-			// console.log(data.event_ids);
-			events_list = data.event_ids
-			console.log(events_list);
-			for (var j=0; j<events_list.length; j++) {
-				var event_id = events_list[j];
-				console.log(event_id);
-				$("#event-"+event_id).fadeIn();
-			}
-		})
-		// console.log(events_list);	
+			// console.log("events list: "+events_list);
+			// console.log("data: "+ data.event_ids);
+			// events_list = events_list.concat(data.event_ids);
+			// events_list = _.union(events_list, data.event_ids);
+			var events_list = data.event_ids;
+			// console.log("events list updated: "+events_list);	
+			console.log("events for group "+group_id+": "+events_list);
+			// return false;
+			displayEvents(events_list);
+		});
 	}
-	// console.log(events_list);
-	// show events
+}
+
+var displayEventsForBuddy = function(buddy_id) {
+	$(".event").fadeOut();
+	var url = '/get_events_for_buddy/'+buddy_id;
+	$.get(url, function(data) {
+		var events_list = data.event_ids;
+		displayEvents(events_list);
+	})
 }
 
 $(document).on("click", ".delete-event-btn", function() {
@@ -131,20 +156,52 @@ $(document).on("click", ".delete-event-btn", function() {
 	});
 });
 
-$(document).ready(function() {
-	$(".attendee").tooltipster({
-		contentAsHTML: true,
-		content:'<div class="panel-body" style="background-image:'+$(this).css("background-image")+'"><div class="gradient"><div class="info"><div class="title">'+$(this).attr("name")+'</div></div></div></div>'
-	});
-});
+// $(document).ready(function() {
+// 	$(".attendee").tooltipster({
+// 		contentAsHTML: true,
+// 		content:'<div class="panel-body" style="background-image:'+$(this).css("background-image")+'"><div class="gradient"><div class="info"><div class="title">'+$(this).attr("name")+'</div></div></div></div>'
+// 	});
+// });
 
 // $(".attendee").hover(function() {
 // 	var photo = $(this).css("background-image");
 // })
 
-var $container = $('#events-container');
-$container.packery({itemSelector: '.event', gutter: 10});
+// var $container = $('#events-container');
+// $container.packery({itemSelector: '.event', gutter: 10});
 
+</script>
+<script>
+$(document).ready(function() {
+	var buddyId = "{{ filter_buddy.id }}";
+	console.log("BUDDY ID= "+buddyId);
+	$("#by-peer-radio").attr('checked', 'true');
+	if (buddyId.length > 0) {
+		enterBuddyFilterMode();
+		$("#peer-search").val("{{ filter_buddy.first_name }} {{ filter_buddy.last_name }}");
+		displayEventsForBuddy(buddyId);
+	}
+})
+</script>
+<script>
+var buddyDict = {};
+var events_showing = [1,2,3,4,5,6];
+
+{% for buddy in buddies %}
+buddyDict["{{ buddy.first_name }} {{ buddy.last_name }}"] = {{ buddy.id }};
+{% endfor %}
+var buddyList = Object.keys(buddyDict); 
+
+$(document).ready(function() {
+	$("#peer-search").autocomplete({
+		source: buddyList,
+		select: function() {
+			var name = $("#peer-search").val();
+			var id = buddyDict[name];
+			displayEventsForBuddy(id);
+		}
+	});
+})
 </script>
 {% endblock %}
 
@@ -162,13 +219,13 @@ $container.packery({itemSelector: '.event', gutter: 10});
 		<label class="control-label">Filter events by:</label>
 		<div class="radio-inline" id="by-group">
 			<label>
-				<input type="radio" name="filter-type" value="by-group" checked>
+				<input type="radio" name="filter-type" id="by-group-radio" value="by-group" checked>
 				Group
 			</label>
 		</div>
 		<div class="radio-inline" id="by-peer">
 			<label>
-				<input type="radio" name="filter-type" value="by-group">
+				<input type="radio" name="filter-type" id="by-peer-radio" value="by-peer">
 				Peer
 			</label>
 		</div>
@@ -191,7 +248,7 @@ $container.packery({itemSelector: '.event', gutter: 10});
 </div>
 
 {% block tiles %}
-
+{{filter_by}}
 <div id="events-container">
 	{% for event in events %}
 	<div class="event panel panel-default" id="event-{{event.id}}">

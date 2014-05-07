@@ -8,17 +8,22 @@ def index(request):
 	# TODO: route to a different page if logged out?
 	return redirect(show_events)
 
-def show_events(request):
+def show_events(request, buddy_id=None):
 	# for a real site, these would be filtered by the current user
 	current_user = Buddy.objects.get(id=13)
 	events = Event.objects.all()
+	buddies = Buddy.objects.all()
 	groups = Group.objects.all()
 	temp_vars = {
 		"page_name": "events",
 		"events": events,
 		"groups": groups,
+		"buddies": buddies,
 		"current_user": current_user
 	}
+	buddy_id = request.GET.get('buddy_id')
+	if buddy_id:
+		temp_vars["filter_buddy"] = Buddy.objects.get(id=buddy_id)
 	return render(request, 'events.html', temp_vars)
 
 # called via AJAX to add user to event

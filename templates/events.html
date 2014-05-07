@@ -10,7 +10,9 @@
 {% block js %}
 <script type="text/javascript" src="site_media/js/peer-search.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
-<script> 
+<script>
+var activeGroups = ["1","2"]; // stubbed in
+
 $(document).ready(function($) {
 	$(".panel-heading").hide();
 	$(".panel-body").click(function() {
@@ -36,6 +38,48 @@ $(document).on("click", ".join-btn", function() {
 	// this stops the click from propogating to the parent
 	return false;
 });
+
+$(document).on("click", ".group-filter", function(e) {
+	e.preventDefault();
+	var group_id = $(this).attr("data-id");
+	if ($(this).hasClass("active")) {
+		$(this).removeClass("active");
+		// activeGroups.remove(group_id);
+		// group_id = "1";
+		var i = activeGroups.indexOf(group_id);
+		activeGroups.splice(i, 1);
+		// _.without(activeGroups, group_id);
+	} else {
+		$(this).addClass("active");
+		activeGroups.push(group_id);
+	}
+	console.log(activeGroups);
+	$(".event").hide();
+	getAndShowEvents();
+});
+
+var getAndShowEvents = function() {
+	var events_list = [];
+	// get events for each group
+	for (var i=0; i < activeGroups.length; i++) {
+		var group_id = activeGroups[i];
+		var url = 'get_events_for_group/'+group_id;
+		$.get(url, function(data) {
+			// console.log(data.event_ids);
+			events_list = data.event_ids
+			console.log(events_list);
+			for (var j=0; j<events_list.length; j++) {
+				var event_id = events_list[j];
+				console.log(event_id);
+				$("#event-"+event_id).show();
+			}
+		})
+		// console.log(events_list);	
+	}
+	// console.log(events_list);
+	// show events
+}
+
 </script>
 {% endblock %}
 
@@ -66,8 +110,8 @@ $(document).on("click", ".join-btn", function() {
 		<br/> 
 
 		<div class="filter-options" id="group-filters">
-			<span id="pre-k" class="label group-filter label-success active">Ms. Creevey's Pre-K Class</span>
-			<span id="daycare" class="label group-filter label-warning active">Saltsville Daycare Playgroup A</span>
+			<span data-id="2" class="label group-filter label-success active">Ms. Creevey's Pre-K Class</span>
+			<span data-id="1" class="label group-filter label-warning active">Saltsville Daycare Playgroup A</span>
 		</div>
 
 		<div class="filter-options" id="peer-filter">
@@ -80,7 +124,7 @@ $(document).on("click", ".join-btn", function() {
 
 {% block tiles %}
 {% for event in events %}
-<div class="event panel panel-default">
+<div class="event panel panel-default" id="event-{{event.id}}">
 	<div class="panel-body" style="background-image: url( /site_media/images/{{event.photo.name}} )">
 		<div style="float:right;">
 			<button type="button" class="btn btn-default btn-lg">

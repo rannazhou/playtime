@@ -10,7 +10,9 @@
 {% block js %}
 <script type="text/javascript" src="site_media/js/peer-search.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.tooltipster.min.js"></script>
-<script> 
+<script type="text/javascript" src="site_media/js/packery.pkgd.min.js"></script>
+<script type="text/javascript" src="site_media/js/bootbox.min.js"></script>
+<script>
 $(document).ready(function($) {
 	$(".panel-heading").hide();
 	$(".panel-body").click(function() {
@@ -30,12 +32,39 @@ $(document).on("click", "#show-all-info", function() {
 
 $(document).on("click", ".join-btn", function() {
 	$(this).toggleClass("btn-success");
+	
+	var eventPanel = $(this).closest(".event");
+	if ($(this).hasClass("btn-success")) {
+		// add lily/stephen's image to attendee list
+		eventPanel.find(".attending").first().append("<div class='attendee' style='background-image: url( /site_media/images/prek/stephen.jpg'></div>");
+		// add ajax call here
+	} else {
+		//remove image from attendee's list
+		// $(this).closest(".event").find(".attending").first().remove
+	}
+
+
 	$(this).text(function(i, text){
 		return text === "Join" ? "Joined" : "Join";
 	});
+
 	// this stops the click from propogating to the parent
 	return false;
 });
+
+$(document).on("click", ".delete-event-btn", function() {
+	var eventPanel = $(this).closest(".event");
+	bootbox.confirm("Are you sure you want to delete your event '"+eventPanel.find(".title").text()+"'?", function(result) {
+		if (result) {
+			//ajax request to delete shit here
+			eventPanel.remove();
+		}
+	});
+});
+
+var $container = $('#events-container');
+$container.packery({itemSelector: '.event', gutter: 10});
+
 </script>
 {% endblock %}
 
@@ -74,42 +103,51 @@ $(document).on("click", ".join-btn", function() {
 			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Search for a peer...">
 		</div>
 	</div>
-
-
 </div>
 
 {% block tiles %}
-{% for event in events %}
-<div class="event panel panel-default">
-	<div class="panel-body" style="background-image: url( /site_media/images/{{event.photo.name}} )">
-		<div style="float:right;">
-			<button type="button" class="btn btn-default btn-lg">
+<div id="events-container">
+	{% for event in events %}
+	<div class="event panel panel-default">
+		<div class="panel-body" style="background-image: url( /site_media/images/{{event.photo.name}} )">
+			{% if event.created_by.last_name|stringformat:"s" == "Brown" %}
+			<button type="button" class="edit-event-btn btn">
 				<span class="glyphicon glyphicon-pencil"></span>
 			</button>
-			<button type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-trash"></span>
-			</button>
-		</div>
-		<div class="gradient">
-			<div class="info">
-				<div class="title">{{ event.title }}</div>
-				<div class="time">{{ event.date|date:"D, M d, Y"}} <br/> {{ event.start_time|time:"P"}} to {{ event.end_time|time:"P"}}</div>
+			{% endif %}
+
+			<div class="gradient">
+				<div class="info">
+					<div class="title">{{ event.title }}</div>
+					<div class="time">{{ event.date|date:"D, M d, Y"}}<br/>{{ event.start_time|time:"P"}} to {{ event.end_time|time:"P"}}</div>
+				</div>
+				{% if event.joined %}
+				<button class="btn join-btn btn-success">Join</button>
+				{% else %}
+				<button class="btn join-btn">Join</button>
+				{% endif %}
 			</div>
-			<button class="btn join-btn">Join</button>
+		</div>
+
+		<div class="panel-heading">
+			<div><label>Created by:</label> The {{ event.created_by.last_name }}s </div>
+			<div><label>Location:</label> {{ event.location }} </div>
+			<div><label>Description:</label> {{ event.description }}</div>
+			<div class="attending"><label>Attending: </label>
+				{% for buddy in event.attendees.all %}
+				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})"></div>
+				{% endfor %}
+			</div>
+
+			{% if event.created_by.last_name|stringformat:"s" == "Brown" %}
+			<center><button type="button" class="delete-event-btn btn">
+				<span class="glyphicon glyphicon-trash"> Delete Event</span>
+			</button></center>
+			{% endif %}
 		</div>
 	</div>
-	<div class="panel-heading">
-		<div><label>Created by:</label> The {{ event.created_by.last_name }}s </div>
-		<div><label>Location:</label> {{ event.location }} </div>
-		<div><label>Description:</label> {{ event.description }}</div>
-		<div><label>Attending: </label>
-			{% for buddy in event.attendees.all %}
-			<div class="attending" style="background-image: url( /site_media/images/{{buddy.photo.name}})"></div>
-			{% endfor %}
-		</div>
-	</div>
+	{% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
 
 {% endblock %}

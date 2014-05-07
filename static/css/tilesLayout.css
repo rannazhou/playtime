@@ -109,7 +109,18 @@
 
 }
 
-.attending {
+.edit-event-btn {
+	float: right;
+	border-radius: 50%;
+	right: 1em;
+	bottom: 1em;
+}
+
+.delete-event-btn {
+
+}
+
+.attendee {
 	display: inline-block;
 	height: 2em;
 	width: 2em;

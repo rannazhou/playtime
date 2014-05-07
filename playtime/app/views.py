@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from playtime.app.models import Buddy, Event, Group
 import json
 from django.http import HttpResponse
+import datetime
 
 def index(request):
 	# TODO: route to a different page if logged out?
@@ -57,7 +58,38 @@ def show_peers(request):
 	}
 	return render(request, 'peers.html', temp_vars)
 
+#this is a helper
+def date_from_string(date_str):
+	m, d, y = date_str.split("/")
+	return datetime.date(year=int(y), month=int(m), day=int(d))
+
+def time_from_string(time_str):
+	time, half = time_str.split(" ")
+	h, m = time.split(":")
+	if half == "PM":
+		h = int(h)%12
+	return datetime.time(hour=int(h), minute=int(m))
+
 def plan(request):
+	user = Buddy.objects.get(id=13) # stephen 
+
+	if request.method == 'POST':
+		data = request.POST
+		title = data['title']
+		description = data['description']
+		location = data['location']
+		start_time = time_from_string(data['start_time'])
+		end_time = time_from_string(data['end_time'])
+		date = date_from_string(data['date'])
+		photo = data['photo']
+		event = Event(title=title, description=description, location=location, start_time=start_time, end_time=end_time, date=date, photo=photo)
+		event.created_by = user
+		event.save()
+		for group in data.getlist('groups[]'):
+			Group.objects.get(id=int(group)).events.add(event)
+		
+		return redirect('events')
+
 	temp_vars = {
 		"page_name": "plan"
 	}

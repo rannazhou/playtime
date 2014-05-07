@@ -11,6 +11,7 @@
 {% block js %}
 <script type="text/javascript" src="site_media/js/image-picker.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.timepicker.js"></script>
+<script type="text/javascript" src="site_media/js/jqBootstrapValidation.js"></script>
 <script>
 $(function() {
 	$( "#end_date" ).datepicker('setDate', new Date());
@@ -48,14 +49,15 @@ $(function() {
 
 
 {% block content %}
-<form role='form' class="container" action="/playtime/new_events">
+<form role='form' class="container" method="POST">
+	{% csrf_token %}
 	<div class="row">
 		<div class="form-group col-md-3 input-lg">
 			<label>Event name:</label>
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type='text' class="form-control input-lg" id="name" name="title">
+			<input type='text' class="form-control input-lg" id="name" name="title" required data-validation-required-message="Make sure to name your event.">
 		</div>
 	</div>
 
@@ -66,11 +68,12 @@ $(function() {
 
 		<div class="form-group col-md-9" id="groups">
 			<div class="checkbox input-lg">
-				<input type="checkbox" value="Ms. Creevy's Pre-K Class">Ms. Creevy's Pre-K Class
+				<input type="checkbox" name="groups[]" value="2" minchecked="1" 
+          data-validation-minchecked-message="You must invite at least one group.">Ms. Creevy's Pre-K Class
 			</div>
 
 			<div class="checkbox input-lg">
-				<input type="checkbox" value="Saltsville Daycare Playgroup A" checked=true>Saltsville Daycare Playgroup A
+				<input type="checkbox" name="groups[]" value="1" checked=true>Saltsville Daycare Playgroup A
 			</div>
 		</div>
 	</div>
@@ -92,17 +95,17 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9" style="overflow-y:scroll;">
-			<input type="file" class="input-lg" id="photo_file">
-			<select class="form-control input-lg image-picker" style="visibility:hidden;" id="default_photo">
+			<input type="file" class="input-lg" id="photo_file" name="photo" disabled="true">
+			<select class="form-control input-lg image-picker" name="photo" style="visibility:hidden;" id="default_photo">
 				<option value=""></option>
-				<option data-img-src="site_media/images/events/hiking.jpg" value="1">Hiking</option>
-				<option data-img-src="site_media/images/events/sweatermouse.jpg" value="2">Picnic</option>
-				<option data-img-src="site_media/images/events/birthday_party.jpg" value="3">Birthday Party</option>
-				<option data-img-src="site_media/images/events/img0.jpg" value="4">Image 0</option>
-				<option data-img-src="site_media/images/events/img1.jpg" value="5">Image 1</option>
-				<option data-img-src="site_media/images/events/babytiger.jpg" value="6">Image 2</option>
-				<option data-img-src="site_media/images/events/img3.jpg" value="7">Image 3</option>
-				<option data-img-src="site_media/images/events/img5.jpg" value="8">Image 4</option>
+				<option data-img-src="site_media/images/events/kidshiking.png" value="events/kidshiking.jpg">Hiking</option>
+				<option data-img-src="site_media/images/events/sweatermouse.jpg" value="events/sweatermouse.jpg">Picnic</option>
+				<option data-img-src="site_media/images/events/birthday_party.jpg" value="events/birthday_party.jpg">Birthday Party</option>
+				<option data-img-src="site_media/images/events/img0.jpg" value="events/img0.jpg">Image 0</option>
+				<option data-img-src="site_media/images/events/img1.jpg" value="events/img1.jpg">Image 1</option>
+				<option data-img-src="site_media/images/events/babytiger.jpg" value="events/babytiger.jpg">Image 2</option>
+				<option data-img-src="site_media/images/events/img3.jpg" value="events/img3.jpg">Image 3</option>
+				<option data-img-src="site_media/images/events/img5.jpg" value="events/img5.jpg">Image 4</option>
 			</select>
 		</div>
 	</div>
@@ -113,45 +116,25 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type="text" class="form-control input-lg" id="location" name="location">
+			<input type="text" class="form-control input-lg" id="location" name="location" required data-validation-required-message="Enter a location so your guests know where to go!s">
 		</div>
 	</div>
 
 	<div class="row">
 
 		<div class="form-group col-md-3 input-lg">
-			<label>Start date:</label>
+			<label> Date:</label>
 		</div>
 
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3">
 			<input type='text' class="form-control text-center input-lg" id="start_date" name="date">
 		</div>
 
-		<div class="form-group col-md-1 text-center input-lg">
-			<label>at</label>
-		</div>
-
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3"> from
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time">
 		</div>
 
-	</div>
-
-	<div class="row">
-
-		<div class="form-group col-md-3 input-lg">
-			<label>End time:</label>
-		</div>
-
-		<div class="form-group col-md-4">
-			<input type='text' class="form-control text-center input-lg" id="end_date">
-		</div>
-
-		<div class="form-group col-md-1 text-center input-lg">
-			<label>at</label>
-		</div>
-
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3"> to
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time">
 		</div>
 

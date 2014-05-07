@@ -44,12 +44,12 @@ $(document).on("click", ".join-btn", function() {
 		// add ajax call here
 	} else {
 		//remove image from attendee's list
-		alert(eventPanel.find(".attendee").first().css("background-image"));
-		for (int i=0;  eventPanel.find(".attendee")) {
-			var img = attendee.css("background-image");
-			alert(img);
+		//alert(eventPanel.find(".attendee").first().css("background-image"));
+		var attendees = eventPanel.find(".attendee");
+		for (var i=0; i< attendees.length; i++) {
+			var img = $(attendees[i]).css("background-image");
 			if (img.indexOf("stephen") > -1) {
-				attendee.remove();
+				$(attendees[i]).remove();
 			}
 		}
 	}

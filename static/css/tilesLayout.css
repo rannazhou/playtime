@@ -112,8 +112,8 @@
 .edit-event-btn {
 	float: right;
 	border-radius: 50%;
-	right: 1em;
-	bottom: 1em;
+	margin-right: 1em;
+	margin-top: 1em;
 }
 
 .delete-event-btn {

@@ -43,7 +43,7 @@ $(function() {
 	    }
 	};
 
-	$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+	$(".input, .textarea").not("[type=submit]").jqBootstrapValidation();
 
 });
 </script>
@@ -126,12 +126,12 @@ $(function() {
 			<input type='text' class="form-control text-center input-lg" id="start_date" name="date" required>
 		</div>
 
-		<div class="form-group col-md-3"> from
+		<div class="form-group col-md-3">
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time" required>
 		</div>
 
-		<div class="form-group col-md-3"> to
-			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time" required>
+		<div class="form-group col-md-3">
+			to <input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time" required>
 		</div>
 
 	</div>

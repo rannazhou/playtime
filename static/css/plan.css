@@ -8,3 +8,7 @@ ul.thumbnails.image_picker_selector{
 	height: 146px;
 	overflow: scroll; 
 }
+
+.time {
+	display:inline-block;
+}

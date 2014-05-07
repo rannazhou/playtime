@@ -8,14 +8,33 @@
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript" src="site_media/js/peer-search.js"></script>
-<script> 
+<script>
+var buddyDict = {};
+
+{% for buddy in buddies %}
+buddyDict["{{ buddy.first_name }} {{ buddy.last_name }}"] = {{ buddy.id }};
+{% endfor %}
+var buddyList = Object.keys(buddyDict); 
+
+$(document).ready(function() {
+	$("#peer-search").autocomplete({
+		source: buddyList,
+		select: function() {
+			var name = $("#peer-search").val();
+			var id = buddyDict[name];
+			$(".peer").fadeOut();
+			$("#buddy-"+id).fadeIn();
+		}
+	});
+})
+ 
 $(document).ready(function($) {
 	$(".panel-heading").hide();
 	$(".panel-body").click(function() {
 		$(this).parent(".panel").find(".panel-heading").slideToggle();
 	});
 });
+
 </script>
 {% endblock %}
 
@@ -45,7 +64,7 @@ $(document).ready(function($) {
 
 {% block tiles %}
 {% for buddy in buddies %}
-<div class="peer panel panel-default">
+<div class="peer panel panel-default" id="buddy-{{ buddy.id }}">
 	<div class="panel-body" style="background-image: url( /site_media/images/{{buddy.photo.name }})">
 		<div class="gradient">
 			<div class="info">

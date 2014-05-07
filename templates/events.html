@@ -193,7 +193,6 @@ $(document).ready(function() {
 </script>
 <script>
 var buddyDict = {};
-var events_showing = [1,2,3,4,5,6];
 
 {% for buddy in buddies %}
 buddyDict["{{ buddy.first_name }} {{ buddy.last_name }}"] = {{ buddy.id }};

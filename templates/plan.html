@@ -11,6 +11,7 @@
 {% block js %}
 <script type="text/javascript" src="site_media/js/image-picker.js"></script>
 <script type="text/javascript" src="site_media/js/jquery.timepicker.js"></script>
+<script type="text/javascript" src="site_media/js/jqBootstrapValidation.js"></script>
 <script>
 $(function() {
 	$( "#end_date" ).datepicker('setDate', new Date());
@@ -56,7 +57,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type='text' class="form-control input-lg" id="name" name="title">
+			<input type='text' class="form-control input-lg" id="name" name="title" required data-validation-required-message="Make sure to name your event.">
 		</div>
 	</div>
 
@@ -67,7 +68,8 @@ $(function() {
 
 		<div class="form-group col-md-9" id="groups">
 			<div class="checkbox input-lg">
-				<input type="checkbox" name="groups[]" value="2">Ms. Creevy's Pre-K Class
+				<input type="checkbox" name="groups[]" value="2" minchecked="1" 
+          data-validation-minchecked-message="You must invite at least one group.">Ms. Creevy's Pre-K Class
 			</div>
 
 			<div class="checkbox input-lg">
@@ -114,45 +116,25 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type="text" class="form-control input-lg" id="location" name="location">
+			<input type="text" class="form-control input-lg" id="location" name="location" required data-validation-required-message="Enter a location so your guests know where to go!s">
 		</div>
 	</div>
 
 	<div class="row">
 
 		<div class="form-group col-md-3 input-lg">
-			<label>Start date:</label>
+			<label> Date:</label>
 		</div>
 
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3">
 			<input type='text' class="form-control text-center input-lg" id="start_date" name="date">
 		</div>
 
-		<div class="form-group col-md-1 text-center input-lg">
-			<label>at</label>
-		</div>
-
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3"> from
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time">
 		</div>
 
-	</div>
-
-	<div class="row">
-
-		<div class="form-group col-md-3 input-lg">
-			<label>End time:</label>
-		</div>
-
-		<div class="form-group col-md-4">
-			<input type='text' class="form-control text-center input-lg" id="end_date">
-		</div>
-
-		<div class="form-group col-md-1 text-center input-lg">
-			<label>at</label>
-		</div>
-
-		<div class="form-group col-md-4">
+		<div class="form-group col-md-3"> to
 			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time">
 		</div>
 

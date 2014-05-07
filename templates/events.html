@@ -54,7 +54,7 @@ $(document).on("click", ".group-filter", function(e) {
 		activeGroups.push(group_id);
 	}
 	console.log(activeGroups);
-	$(".event").hide();
+	$(".event").fadeOut();
 	getAndShowEvents();
 });
 
@@ -71,7 +71,7 @@ var getAndShowEvents = function() {
 			for (var j=0; j<events_list.length; j++) {
 				var event_id = events_list[j];
 				console.log(event_id);
-				$("#event-"+event_id).show();
+				$("#event-"+event_id).fadeIn();
 			}
 		})
 		// console.log(events_list);	

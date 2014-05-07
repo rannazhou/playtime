@@ -43,6 +43,8 @@ $(function() {
 	    }
 	};
 
+	$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+
 });
 </script>
 {% endblock %}
@@ -67,14 +69,8 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9" id="groups">
-			<div class="checkbox input-lg">
-				<input type="checkbox" name="groups[]" value="2" minchecked="1" 
-          data-validation-minchecked-message="You must invite at least one group.">Ms. Creevy's Pre-K Class
-			</div>
-
-			<div class="checkbox input-lg">
-				<input type="checkbox" name="groups[]" value="1" checked=true>Saltsville Daycare Playgroup A
-			</div>
+			<input type="checkbox" name="groups[]" value="2" data-validation-minchecked-minchecked="1" data-validation-minchecked-message="You must invite at least one group.">Ms. Creevy's Pre-K Class
+			<input type="checkbox" name="groups[]" value="1">Saltsville Daycare Playgroup A
 		</div>
 	</div>
 
@@ -116,7 +112,7 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-9">
-			<input type="text" class="form-control input-lg" id="location" name="location" required data-validation-required-message="Enter a location so your guests know where to go!s">
+			<input type="text" class="form-control input-lg" id="location" name="location" required data-validation-required-message="Enter a location so your guests know where to go!">
 		</div>
 	</div>
 
@@ -127,15 +123,15 @@ $(function() {
 		</div>
 
 		<div class="form-group col-md-3">
-			<input type='text' class="form-control text-center input-lg" id="start_date" name="date">
+			<input type='text' class="form-control text-center input-lg" id="start_date" name="date" required>
 		</div>
 
 		<div class="form-group col-md-3"> from
-			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time">
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="start_time" name="start_time" required>
 		</div>
 
 		<div class="form-group col-md-3"> to
-			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time">
+			<input type='text' class="form-control input-lg time ui-timepicker-input text-center" id="end_time" name="end_time" required>
 		</div>
 
 	</div>

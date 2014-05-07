@@ -75,7 +75,7 @@ var enterGroupFilterMode = function() {
 	$("#peer-filter").hide();
 	$("#buddy-label").hide();
 	$("#group-filters").show();
-	$(".event").fadeOut();
+	$(".event").hide();
 	displayEventsForActiveGroups();
 }
 
@@ -111,7 +111,7 @@ $(document).on("click", ".group-filter", function(e) {
 		activeGroups.push(group_id);
 	}
 	console.log(activeGroups);
-	$(".event").fadeOut();
+	$(".event").hide();
 	displayEventsForActiveGroups();
 });
 
@@ -145,7 +145,7 @@ var displayEventsForActiveGroups = function() {
 }
 
 var displayEventsForBuddy = function(buddy_id) {
-	$(".event").fadeOut();
+	$(".event").hide();
 	var url = '/get_events_for_buddy/'+buddy_id;
 	$.get(url, function(data) {
 		var events_list = data.event_ids;

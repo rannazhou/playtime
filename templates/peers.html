@@ -57,7 +57,7 @@ $(document).ready(function($) {
 		<div><label>Parents:</label> {{buddy.parent1}} and {{buddy.parent2}} </div>
 		<div><label>Phone Number:</label> {{buddy.phone}}</div>
 		<div><label>Address:</label> {{buddy.address}} </div>
-		<div><button class="btn view-events-btn">View Events</button> </div>
+		<div><a href="/events/?buddy_id={{buddy.id}}" class="btn btn-primary view-events-btn">View Events</a> </div>
 	</div>
 </div>
 {% endfor %}

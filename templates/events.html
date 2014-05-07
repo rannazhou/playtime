@@ -44,13 +44,15 @@ $(document).on("click", ".join-btn", function() {
 		// add ajax call here
 	} else {
 		//remove image from attendee's list
-		for (attendee in eventPanel.find(".attending")) {
-			if (attendee.css("background-image").indexOf("stephen") > -1) {
-				attendee.remove();
+		//alert(eventPanel.find(".attendee").first().css("background-image"));
+		var attendees = eventPanel.find(".attendee");
+		for (var i=0; i< attendees.length; i++) {
+			var img = $(attendees[i]).css("background-image");
+			if (img.indexOf("stephen") > -1) {
+				$(attendees[i]).remove();
 			}
 		}
 	}
-
 
 	$(this).text(function(i, text){
 		return text === "Join" ? "Joined" : "Join";
@@ -166,7 +168,7 @@ $container.packery({itemSelector: '.event', gutter: 10});
 		</div>
 
 		<div class="filter-options" id="peer-filter">
-			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Search for a peer...">
+			<input type="text" class="form-control input-lg" id="peer-search" placeholder="Filter by a buddy...">
 		</div>
 	</div>
 	<div id="buddy-label">
@@ -207,7 +209,7 @@ $container.packery({itemSelector: '.event', gutter: 10});
 			<div><label>Description:</label> {{ event.description }}</div>
 			<div class="attending"><label>Attending: </label>
 				{% for buddy in event.attendees.all %}
-				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})"></div>
+				<div class="attendee" style="background-image: url( /site_media/images/{{buddy.photo.name}})" name="{{buddy.first_name}} {{buddy.last_name}}"></div>
 				{% endfor %}
 			</div>
 

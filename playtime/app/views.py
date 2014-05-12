@@ -11,7 +11,7 @@ def index(request):
 def show_events(request, buddy_id=None):
 	# for a real site, these would be filtered by the current user
 	current_user = Buddy.objects.get(id=13)
-	events = Event.objects.all()
+	events = Event.objects.all().order_by('date')
 	buddies = Buddy.objects.all()
 	groups = Group.objects.all()
 	temp_vars = {
@@ -34,7 +34,7 @@ def join_event(request, child_id, event_id):
 
 def get_events_for_group(request, group_id):
 	group = Group.objects.get(id=group_id)
-	events = group.events.all()
+	events = group.events.all().order_by('date')
 	event_ids = []
 	for event in events:
 		event_ids.append(event.id)
@@ -43,7 +43,7 @@ def get_events_for_group(request, group_id):
 
 def get_events_for_buddy(request, buddy_id):
 	buddy = Buddy.objects.get(id=buddy_id)
-	events = buddy.events_attending.all()
+	events = buddy.events_attending.all().order_by('date')
 	event_ids = []
 	for event in events:
 		event_ids.append(event.id)
@@ -60,7 +60,7 @@ def get_buddies_in_group(request, group_id):
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def show_peers(request):
-	buddies = Buddy.objects.all()
+	buddies = Buddy.objects.all().order_by('last_name')
 	temp_vars = {
 		"page_name": "buddies",
 		"buddies": buddies

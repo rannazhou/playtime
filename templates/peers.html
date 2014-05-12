@@ -49,6 +49,9 @@ var showBuddiesForGroup = function(group_id) {
 }
 
 $(document).ready(function() {
+	// only show Ms. Creevey's pre-k class on load
+	showBuddiesForGroup(2);
+
 	$("#group-select").change(function() {
 		console.log("changed");
 		var group_id = $(this).find(":selected").attr("data-id");

@@ -60,7 +60,6 @@ def get_buddies_in_group(request, group_id):
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def show_peers(request):
-	# TODO: filter by group
 	buddies = Buddy.objects.all()
 	temp_vars = {
 		"page_name": "buddies",
